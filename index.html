@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mirai School of Technology</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon"
+        href="https://media.licdn.com/dms/image/v2/D4D0BAQESji6QYn0B1Q/company-logo_200_200/B4DZawDt6bHAAM-/0/1746710488373/mirai_school_of_technology_logo?e=2147483647&v=beta&t=ffQsWJ1xdSwCqKPKbDTLnoQscngGhXTd4XeEhFSNOGY" />
+    <link rel="icon" type="image/x-icon" href="https://miraisot.com/favicon.ico" />
+</head>
+
+<body>
+    <!-- Header -->
+    <!-- <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <span class="logo-mirai">Mirai</span><span class="logo-school">School of Technology</span>
+            </div>
+            <nav class="nav">
+                 Navigation links can go here if needed, though the screenshot mainly shows the logo and hero -->
+    <!-- <div class="lang-switch">
+                    <span>English</span>
+                </div>
+            </nav>
+        </div>
+    </header> -->
+
+    <!-- Hero Section -->
+
+    <section class="hero">
+        <div class="container hero-container">
+            <!-- LEFT CONTENT -->
+            <div class="hero-content">
+                <div class="hero-logo">
+                    <img src="mirai-logo (1).png" alt="Mirai Logo">
+                </div>
+
+                <h1 class="hero-title">
+                    Engineer your future <br />
+                    with AI
+                </h1>
+
+                <div class="hero-badge">AI-First B.Tech Program</div>
+
+                <div class="hero-subtitle">
+                    <p>
+                        <i class="bi bi-check-circle"></i>
+                        Four Year Undergraduate Program.
+                    </p>
+                    <p>
+                        <i class="bi bi-check-circle"></i>
+                        B.Tech in CSE [AI] degree by UGC approved university.
+                    </p>
+                </div>
+
+                <div class="hero-info-grid">
+                    <div class="info-card">
+                        <div class="card-icon">
+                            <img src="Hero1.svg" alt="" srcset="" />
+                        </div>
+                        <h4>Eligibility</h4>
+                        <p>Class 12 students with Physics, Chemistry and Mathematics</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="card-icon">
+                            <img src="Hero2.svg" alt="" srcset="" />
+                        </div>
+                        <h4>Program Duration</h4>
+                        <p>4 Years Full Time Undergraduate Program</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="card-icon">
+                            <img src="Hero3.svg" alt="" srcset="" />
+                        </div>
+                        <h4>Exam Date</h4>
+                        <p>26th August, 2025</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="card-icon">
+                            <img src="Hero4.svg" alt="" srcset="" />
+                        </div>
+                        <h4>Last Date to Apply</h4>
+                        <p>30th August, 2025</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FORM -->
+            <div class="hero-form-container">
+                <div class="form-header">
+                    <button id="register-tab" type="button" class="active">
+                        Register
+                    </button>
+                    <button id="login-tab" type="button">Log In</button>
+                </div>
+
+                <form class="lead-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Enter Name *" required />
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" placeholder="Enter Email Address *" required />
+                    </div>
+
+                    <div class="form-group phone-group">
+                        <span class="country-code" style="background-color: #e9e2e2">+91</span>
+                        <input type="tel" placeholder="Enter Mobile Number *" required />
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" placeholder="Enter OTP" required />
+                    </div>
+
+                    <div class="form-group">
+                        <select required>
+                            <option value="" disabled selected>
+                                Select Year Of Passing Class 12th
+                            </option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <select required>
+                            <option value="" disabled selected>
+                                Select Class 12th Stream
+                            </option>
+                            <option value="maths">Maths</option>
+                            <option value="bio">Bio</option>
+                            <option value="both">Maths And Bio</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="submit-btn">APPLY NOW</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Campuses -->
+    <section class="campuses-section">
+        <div class="container">
+            <h2 class="campus-title">Our Campuses</h2>
+            <p class="campus-subtitle">
+                Explore AI-first tech programs offered at AICTE-approved partner
+                colleges across India.
+            </p>
+
+            <div class="campus-grid">
+                <!-- Card 1 -->
+                <div class="campus-card">
+                    <div class="campus-image" style="background-image: url('hitech.jpeg')"></div>
+
+                    <div class="campus-content">
+                        <h3>Hi-Tech Institute of Engineering & Technology</h3>
+                        <p class="location">Ghaziabad, Uttar Pradesh</p>
+                        <p class="course">B.Tech CSE-AI/ML</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="campus-card">
+                    <div class="campus-image" style="background-image: url('Rathinam.jpg')"></div>
+
+                    <div class="campus-content">
+                        <h3>Rathinam Institute of Technology</h3>
+                        <p class="location">Bengaluru, Karnataka</p>
+                        <p class="course">BE CSE-AI/ML</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admission Process -->
+    <section class="section admission">
+        <div class="container">
+            <div class="admission-header-card">
+                <h2>Admission Process</h2>
+                <p>From Application to Enrolment keep an eye on these key dates.</p>
+            </div>
+
+            <div class="admission-steps">
+                <div class="step-row">
+                    <div class="step-label">Mirai AI Test</div>
+                    <div class="step-value">To be announced</div>
+                </div>
+                <div class="step-row">
+                    <div class="step-label">Last day to apply</div>
+                    <div class="step-value">To be announced</div>
+                </div>
+                <div class="step-row">
+                    <div class="step-label">Results</div>
+                    <div class="step-value">Within 5 Days</div>
+                </div>
+                <div class="step-row">
+                    <div class="step-label">Personal Interview</div>
+                    <div class="step-value">Online / Offline</div>
+                </div>
+                <div class="step-row">
+                    <div class="step-label">Final Offer</div>
+                    <div class="step-value">Within 5 days of interview</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Life @ Mirai -->
+    <section class="section life-at-mirai">
+        <div class="container">
+            <h2 class="section-title">Life @ Mirai</h2>
+            <p class="section-subtitle">Life Beyond Classrooms</p>
+
+            <div class="life-carousel-container">
+                <!-- <button class="carousel-btn prev" id="life-prev">❮</button> -->
+                <div class="opacity-left"></div>
+                <div class="life-carousel">
+                    <div class="life-card" style="
+                background-color: #e5e7eb;
+                background-image: url('/interviewroom.png');
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+              "></div>
+                    <div class="life-card" style="
+                background-color: #d1d5db;
+                background-image: url('/Mac_Lab.png');
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+
+              "></div>
+                    <div class="life-card" style="
+                background-color: #9ca3af;
+                background-image: url('/MiraiVerse-Lab.png');
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+              "></div>
+                    <div class="life-card" style="
+                background-color: #6b7280;
+                background-image: url('/clusterroom.jpeg');
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+              "></div>
+                    <!-- Duplicate cards for demonstration/filling -->
+                    <div class="life-card" style="
+                background-color: #e5e7eb;
+                background-image: url('/hitech.jpeg');
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+              "></div>
+                    <div class="life-card" style="
+                background-color: #d1d5db;
+                background-image: url('/Rathinam.jpg');
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+              "></div>
+                </div>
+                <div class="opacity-right"></div>
+                <!-- <button class="carousel-btn next" id="life-next">❯</button> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section testimonials">
+        <div class="container">
+            <h2 class="section-title">Testimonials</h2>
+            <p class="section-subtitle">Real talk from Seniors</p>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="t-header">
+                        <div class="avatar jiya"></div>
+                        <div class="t-info">
+                            <h4>Jiya Kaushik</h4>
+                            <span>Batch'25|Hi-Tech</span>
+                        </div>
+                    </div>
+                    <p class="t-text">
+                        I joined Mirai with a lots of doubts, but the experience has been
+                        much better than I expected. The classes are practical, mentors
+                        explain everything patiently, and the daily coding practice has
+                        really boosted my confidence. Also, Varun Sir is my favourite. His
+                        guidence has hepled me a lot.
+                    </p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="t-header">
+                        <div class="avatar molly"></div>
+                        <div class="t-info">
+                            <h4>Molly Arora</h4>
+                            <span>Batch'25|Hi-Tech</span>
+                        </div>
+                    </div>
+                    <p class="t-text">
+                        I left NIT to join Mirai because I wanted something more hands-on,
+                        and I'm glad I made that choice. Here, everything is practical,
+                        coding, AI tools, projects, everything. The mentors explain
+                        concepts so clearly that even the tough topics start making sense.
+                    </p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="t-header">
+                        <div class="avatar ritik"></div>
+                        <div class="t-info">
+                            <h4>Ritik</h4>
+                            <span>Batch'25|Rathinam</span>
+                        </div>
+                    </div>
+                    <p class="t-text">
+                        What surprised me the most about Mirai is how comfortable the
+                        environment is. I'm usually shy, but here I started asking
+                        questions, talking to mentors, and even helping classmates. The
+                        learning feels real and personal. For the first time, I'm actually
+                        excited to study.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Mirai Advantage -->
+    <section class="section advantage">
+        <div class="container">
+            <h2 class="section-title">The Mirai Advantage</h2>
+            <p class="section-subtitle">
+                Why choose Mirai School of Technology for your AI journey
+            </p>
+
+            <div class="advantage-grid">
+                <div class="adv-card">
+                    <div class="adv-icon">
+                        <img src="Frame 3.svg" alt="" style="width: 65px;">
+                    </div>
+
+                    <h4>AI-First Education</h4>
+                    <p>
+                        Stay ahead with the tools, stacks, and trends that will shape 2030
+                        and beyond.
+                    </p>
+                </div>
+
+                <div class="adv-card">
+                    <div class="adv-icon">
+                        <img src="Frame 3.svg">
+                    </div>
+                    <h4 style="font-size: 22px">Code with AI from Day 1</h4>
+                    <p>
+                        Start building real AI-powered applications right from your very
+                        first class.
+                    </p>
+                </div>
+                <div class="adv-card">
+                    <div class="adv-icon">
+                        <img src="Frame 5.svg">
+                    </div>
+                    <h4 style="font-size: 22px">Infra Designed for Coders</h4>
+                    <p>
+                        Code in smart classrooms, with robotics & Apple labs featuring
+                        built-in debugging zones.
+                    </p>
+                </div>
+                <div class="adv-card">
+                    <div class="adv-icon">
+                        <img src="Frame 6.svg">
+                    </div>
+                    <h4 style="font-size: 22px">Selection of Top 20%</h4>
+                    <p>
+                        Study with a selective, merit-based cohort, fostering peer
+                        learning and competition.
+                    </p>
+                </div>
+                <div class="adv-card">
+                    <div class="adv-icon">
+                        <img src="Frame 7.svg" alt="">
+                    </div>
+                    <h4 style="font-size: 22px">Tech Practitioners as Teachers</h4>
+                    <p>
+                        Learn directly from industry experts working with GenAI, LLMs, and
+                        code copilots.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Placement Assistance -->
+    <section class="section placement">
+        <div class="container">
+            <h2 class="section-title text-white" style="color: white">
+                Placement Assistance
+            </h2>
+
+            <div class="placement-grid">
+                <div class="placement-item">
+                    <div class="p-icon">
+                        <svg width="52" height="52" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z"
+                                stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M20 21C20 16.5817 16.4183 13 12 13C7.58172 13 4 16.5817 4 21" stroke="white"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <h3 style="color: white">20+ Career Mentors</h3>
+                    <p>
+                        Dedicated industry<br />professionals guiding your career path
+                    </p>
+                </div>
+                <div class="placement-divider"></div>
+                <div class="placement-item">
+                    <div class="p-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2" stroke="white" stroke-width="2" />
+                            <path
+                                d="M16 21V5C16 4.46957 15.7893 3.96086 15.4142 3.58579C15.0391 3.21071 14.5304 3 14 3H10C9.46957 3 8.96086 3.21071 8.58579 3.58579C8.21071 3.96086 8 4.46957 8 5V21"
+                                stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <h3 style="color: white">50+ Hiring Partners</h3>
+                    <p>
+                        Dedicated industry<br />
+                        professionals guiding your career path
+                    </p>
+                </div>
+                <div class="placement-divider"></div>
+                <div class="placement-item">
+                    <div class="p-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M23 6L13.5 15.5L8.5 10.5L1 18" stroke="white" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M17 6H23V12" stroke="white" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <h3 style="color: white">100% Internship Support</h3>
+                    <p>
+                        Dedicated industry<br />
+                        professionals guiding your career path
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Campus of Tomorrow -->
+    <section class="section campus-tomorrow">
+        <div class="container">
+            <div class="cta-banner">
+                <div class="cta-content">
+                    <h2>Welcome to the Campus of Tomorrow</h2>
+                    <p>Designed for creators, builders & boundary-breakers.</p>
+                    <button class="cta-btn">Apply Now</button>
+                </div>
+                <div class="cta-gallery">
+                    <!-- Top large image -->
+                    <div class="gallery-item gallery-top" style="
+                background-image: url('hackathon_photo.jpg');
+                background-color: #ddd;
+              "></div>
+
+                    <!-- Middle left -->
+                    <div class="gallery-item gallery-mid-left" style="
+                background-image: url('MiraiVerse-Lab.png');
+                background-color: #ccc;
+              "></div>
+                    <!-- Middle right -->
+                    <div class="gallery-item gallery-mid-right" style="
+                background-image: url('Mac_Lab.png');
+                background-color: #bbb;
+              "></div>
+
+                    <!-- Bottom left -->
+                    <div class="gallery-item gallery-bottom-left" style="
+                background-image: url('interviewroom.png');
+                background-color: #aaa;
+              "></div>
+
+                    <!-- Bottom right -->
+                    <div class="gallery-item gallery-bottom-right" style="
+                background-image: url('clusterroom.jpeg');
+                background-color: #999;
+              "></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scholarship Program -->
+    <section class="section scholarship">
+        <div class="container">
+            <h2 class="section-title">Scholarship Program</h2>
+            <p class="section-subtitle">
+                Unlocking potential through financial support.
+            </p>
+
+            <div class="scholarship-grid">
+                <div class="scholarship-card">
+                    <div class="sch-icon">
+                        <img src="1.svg" alt="" srcset="" width="120px" />
+                    </div>
+                    <h4>Merit-based Scholarship</h4>
+                    <p>Upto 100% tuition waiver for top performers.</p>
+                    <p style="
+                color: #5b75b8;
+                font-weight: bolder;
+                padding-bottom: 10;
+                margin-top: -10px;
+              ">
+                        ₹4L-₹16L
+                    </p>
+                </div>
+                <div class="scholarship-card">
+                    <div class="sch-icon">
+                        <img src="2.svg" alt="" srcset="" width="120px" />
+                    </div>
+                    <h4>Need-based Scholarship</h4>
+                    <p>Financial assistance for deserving students.</p>
+                    <p style="color: #5b75b8; font-weight: bolder; margin-top: -10px">
+                        Upto to ₹8L
+                    </p>
+                </div>
+                <div class="scholarship-card">
+                    <div class="sch-icon">
+                        <img src="3.svg" alt="" width="120px" />
+                    </div>
+                    <h4>Research Grant</h4>
+                    <p>
+                        Funding for innovative AI research projects. Funding for research
+                        projects.
+                    </p>
+                    <p style="color: #5b75b8; font-weight: bolder; margin-top: -10px">
+                        ₹2L - ₹5L
+                    </p>
+                </div>
+                <div class="scholarship-card">
+                    <div class="sch-icon">
+                        <img src="4.svg" alt="" width="120px" />
+                    </div>
+                    <h4>Diversity Scholarship</h4>
+                    <p>Supporting underrepreseneted communities in tech.</p>
+                    <p style="color: #5b75b8; font-weight: bolder; margin-top: -10px">
+                        Up to ₹6L
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Financing Options -->
+    <section class="section financing">
+        <div class="container">
+            <h2 class="section-title">Financing Options</h2>
+            <p class="section-subtitle">
+                Easy EMI available through our financing partners, subject to meeting
+                financial eligibility criteria.
+            </p>
+
+            <div class="bank-logos">
+                <div class="bank-logo-item">
+                    <img src="IDFC First Bank.png" alt="IDFC FIRST Bank" class="bank-logo-img idfc-logo" />
+                </div>
+                <div class="vertical-divider"></div>
+                <div class="bank-logo-item">
+                    <img src="Yes Bank.png" alt="YES BANK" class="bank-logo-img" />
+                </div>
+                <div class="vertical-divider"></div>
+                <div class="bank-logo-item">
+                    <img src="Propelld.png" alt="propelld" class="bank-logo-img propelld-logo" />
+                </div>
+            </div>
+
+            <!-- New Bottom CTA Cards -->
+            <div class="cta-cards-container">
+                <!-- Brochure Card -->
+                <div class="cta-bottom-card">
+                    <div class="cta-text-content">
+                        <h3>Learn more about Mirai School of Technology</h3>
+                        <p>
+                            Download our comprehensive brochure to explore programs,
+                            curriculum, and opportunities
+                        </p>
+                    </div>
+                    <button class="cta-pill-btn blue-btn" style="background-color: #3f51f5">
+                        Download Brochure
+                    </button>
+                </div>
+
+                <!-- Contact/Apply Card -->
+                <div class="cta-bottom-card">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span class="icon">🌐</span>
+                            <a href="https://miraisot.com">miraisot.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <span class="icon">✉️</span>
+                            <a href="mailto:connect@msot.org">connect@msot.org</a>
+                        </div>
+                        <div class="contact-item">
+                            <span class="icon">📞</span>
+                            <a href="tel:+918860316031" style="text-decoration: underline">+91 8860316031</a>
+                        </div>
+                    </div>
+                    <div class="apply-action">
+                        <p>Limited seats available. Claim yours now.</p>
+                        <button class="cta-pill-btn blue-btn" style="background-color: #3f51f5">
+                            Apply Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
