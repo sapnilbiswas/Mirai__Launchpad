@@ -136,6 +136,7 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.6);
     border-radius: 12px;
     padding: 20px;
+    border: 1.5px solid #3b82f6;
     box-shadow: 0 4px 15px rgba(0, 123, 255, 0.05);
     transition: transform 0.3s ease;
     display: flex;
@@ -166,7 +167,6 @@ body {
 }
 
 .card-icon {
-    background: #ffffff;
     width: 44px;
     height: 44px;
     border-radius: 50%;
@@ -193,14 +193,23 @@ body {
     line-height: 1.3;
 }
 
+
+.eli_card_info {
+    width: 69px;
+}
+.card-icon_book {
+    width: 35px;
+}
+
 /* Form */
 
 .hero-form-container {
-    width: 460px;
+    width: 560px;
+    height: 750px;
     background: #ffffff;
     border-radius: 20px;
     padding: 32px;
-    /* border: 1.5px solid #3b82f6; */
+    border: 1.5px solid #3b82f6;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
 }
 
@@ -208,7 +217,8 @@ body {
 .form-header {
     display: flex;
     border-bottom: 1px solid #e5e7eb;
-    margin-bottom: 28px;
+    margin-bottom: 18px;
+    margin-top: -70px
 }
 
 .form-header button {
@@ -216,6 +226,7 @@ body {
     padding: 14px;
     background: none;
     border: none;
+    margin-top: 100px;
     font-size: 18px;
     font-weight: 600;
     color: #6b7280;
@@ -609,12 +620,42 @@ body {
     z-index: 10;
     position: absolute;
 }
+.life-carousel {
+    overflow: hidden;
+    width: 100vw;
+}
+
+.life-track {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    animation: infiniteScroll 35s linear infinite;
+}
+
+@keyframes infiniteScroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
 
 .life-card {
     flex: 0 0 320px;
     height: 420px;
     scroll-snap-align: center;
     border-radius: 20px;
+    animation: scroll 5s;
+}
+
+@keyframes scroll {
+
+ 0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+
+
+  
+}
+.scroller:hover .scroller-inner {
+  animation-play-state: paused;
 }
 
 .carousel-btn:hover {
@@ -841,8 +882,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 55px;
-    border-radius: 50%;
+    width: 40px;
+    /* border-radius: 50%; */
+    height: 35px;
 }
 
 .adv-icon img {
@@ -1536,6 +1578,7 @@ body {
         text-align: center;
         align-items: center;
         max-width: 100%;
+        margin: 0 auto;
     }
 
     .hero-title {
@@ -1549,7 +1592,9 @@ body {
     }
 
     .hero-subtitle {
-        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
     }
 
     .hero-subtitle p {
@@ -1824,9 +1869,6 @@ body {
         font-size: 0.9rem;
     }
 
-    .bank-logo-img {
-        max-height: 10px;
-    }
 
     .cta-pill-btn {
         width: 100%;
@@ -1853,5 +1895,17 @@ body {
     .gallery-bottom-left,
     .gallery-bottom-right {
         height: 160px;
+    }
+}
+
+@media (max-width: 520px) {
+    .cta-content {
+        background-position-x: -64px;
+    }
+}
+
+@media (max-width: 1399px) {
+    .adv-card {
+        height: 13.7rem;
     }
 }
