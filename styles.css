@@ -1055,9 +1055,10 @@ body {
 
 .cta-content h2 {
     font-size: 2.5rem;
-    font-weight: 700;
     margin-bottom: 15px;
     line-height: 1.2;
+    font-family: 'Inter', sans-serif;
+    font-weight: normal;
 }
 
 .cta-content p {
@@ -1920,12 +1921,13 @@ body {
     .hero-content {
         margin: 0 auto;
     }
+
 }
 
 @media (max-width: 1024px) {
     .placement {
         position: relative;
-        left: 54px;
+        left: 0px;
     }
     .placement .container {
         display: flex;
