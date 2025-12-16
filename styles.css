@@ -563,6 +563,12 @@ body {
     z-index: 1;
 }
 
+.life-card{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .life-carousel {
     position: relative;
     left: -0%;
@@ -644,6 +650,7 @@ body {
     scroll-snap-align: center;
     border-radius: 20px;
     animation: scroll 5s;
+    
 }
 
 @keyframes scroll {
@@ -888,7 +895,6 @@ body {
 }
 
 .adv-icon img {
-    border-radius: 50%;
     width: 100%;
     height: 100%;
 }
@@ -1142,7 +1148,7 @@ body {
             #f0f1f2 55%,
             #ffffff 100%);
 
-    padding: 5px;
+    padding: 0px 20px;
     border-radius: 16px;
     border: 1.5px solid #6fcad6;
     text-align: left;
@@ -1578,7 +1584,6 @@ body {
         text-align: center;
         align-items: center;
         max-width: 100%;
-        margin: 0 auto;
     }
 
     .hero-title {
@@ -1907,5 +1912,29 @@ body {
 @media (max-width: 1399px) {
     .adv-card {
         height: 13.7rem;
+    }
+}
+
+
+@media (max-width: 1024px) {
+    .hero-content {
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 1024px) {
+    .placement {
+        position: relative;
+        left: 54px;
+    }
+    .placement .container {
+        display: flex;
+        flex-direction: column;
+    }
+}
+@media (max-width: 1019px) {
+    .placement .container {
+        display: flex;
+        flex-direction: column;
     }
 }
