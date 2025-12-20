@@ -1277,6 +1277,7 @@ background-color: white;
 .gallery-top {
     grid-column: 1 / 3;
     height: 150px;
+    background-position-y: -9.3rem;
 }
 
 .gallery-mid-left,
