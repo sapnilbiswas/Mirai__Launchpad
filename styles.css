@@ -25,7 +25,6 @@ body {
     padding: 0 20px;
 }
 
-
 .hero {
     background: linear-gradient(180deg, #f4fbff 0%, #ffffff 100%);
     padding: 0;
@@ -708,22 +707,29 @@ body {
     background-position: center;
     position: relative;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Play button */
 .play-btn {
-    position: absolute;
-    inset: 0;
-    margin: auto;
-    width: 72px;
-    height: 72px;
+    width: 60px;
+    height: 60px;
     background: rgba(0, 0, 0, 0.6);
     color: #fff;
-    font-size: 32px;
+    font-size: 24px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.video-card:hover .play-btn {
+    transform: scale(1.1);
+    background: rgba(220, 38, 38, 0.9);
+    /* YouTube Red-ish */
 }
 
 /* IFRAME */
@@ -732,6 +738,7 @@ body {
     height: 100%;
     border: none;
 }
+
 
 
 @media (max-width: 768px) {
@@ -1763,11 +1770,6 @@ body {
         max-width: 100%;
     }
 
-    .hero-logo {
-        justify-content: center;
-        margin-bottom: 20px;
-    }
-
     .hero-title {
         font-size: 42px;
         line-height: 1.15;
@@ -2160,8 +2162,14 @@ body {
 .mirai-macbook {
     background-size: contain;
     max-height: 400px;
-    /* Limit image height */
+    /* Keep the height limit */
+    max-width: 100%;
+    /* Ensure it doesn't overflow */
     width: auto;
+    /* Maintain aspect ratio */
+    height: auto;
+    /* Maintain aspect ratio */
+    object-fit: contain;
 }
 
 /* BADGE */
