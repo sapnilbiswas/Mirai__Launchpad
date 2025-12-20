@@ -1,4 +1,4 @@
-place@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 * {
     box-sizing: border-box;
@@ -93,10 +93,9 @@ body {
     margin-bottom: 8px;
 }
 
-
 .hero-badge {
     display: inline-block;
-    padding: 6px 14px;
+    padding: 6px 7px;
     font-size: 16px;
     font-weight: 600;
     border-radius: 8px;
@@ -145,13 +144,15 @@ body {
     background: linear-gradient(180deg, #bae7f4 0%, rgb(228, 245, 250) 40%, rgb(255, 255, 255) 100%);
     border: 1px solid rgba(255, 255, 255, 0.6);
     border-radius: 12px;
-    padding: 5px;
+    padding: 12px;
     border: 1.5px solid #3b82f6;
     box-shadow: 0 4px 15px rgba(0, 123, 255, 0.05);
     transition: transform 0.3s ease;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
 }
 
 .hero-subtitle p {
@@ -177,48 +178,47 @@ body {
 }
 
 .card-icon {
-    width: 30px;
-    height: 30px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 12px;
+    margin-bottom: 0;
+    flex-shrink: 0;
 }
 
+.card-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
 
+.card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
 .info-card h4 {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     font-weight: 700;
     color: var(--dark-blue);
-    margin-bottom: 5px;
+    margin-bottom: 4px;
     text-transform: capitalize;
-}
-
-.info-card p {
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--text-main);
     line-height: 1.3;
 }
 
-
-.eli_card_info {
-    width: 69px;
+.info-card p {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-main);
+    line-height: 1.4;
+    word-wrap: break-word;
 }
 
-.program_dur {
-    width: 69px;
-}
 
-.card-icon_book {
-    width: 58px;
-}
-
-.last_date {
-    width: 59px;
-}
 
 /* Form */
 
@@ -485,6 +485,8 @@ body {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 48px;
+    justify-items: anchor-center;
+    justify-self: center;
 }
 
 .campus-card {
@@ -493,6 +495,8 @@ body {
     overflow: hidden;
     box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
     transition: transform 0.35s ease, box-shadow 0.35s ease;
+    width: 100%;
+    height: 380px;
 }
 
 .campus-card:hover {
@@ -804,17 +808,28 @@ body {
 
 @media (max-width: 768px) {
     .info-card {
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
-        gap: 14px;
+        text-align: center;
+        gap: 8px;
+        padding: 14px;
     }
 
     .info-card h4 {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
+        margin-bottom: 4px;
+        width: 100%;
     }
 
     .info-card p {
         font-size: 0.85rem;
+        line-height: 1.4;
+        width: 100%;
+    }
+
+    .card-icon {
+        margin-bottom: 8px;
+        align-self: center;
     }
 }
 
@@ -950,19 +965,19 @@ body {
     /* background: linear-gradient(90deg, , #e9f0f8);
      border-image: linear-gradient(90deg, #1136da , #e9f0f8 ) 1; */
     background:
-    linear-gradient(90deg,#dce0f2, #e9f0f8) padding-box,
-    linear-gradient(90deg, #7b87b6, #e9f0f8) border-box;
-     border-width: 2px;
-     border-radius: 16px;
+        linear-gradient(90deg, #dce0f2, #e9f0f8) padding-box,
+        linear-gradient(90deg, #7b87b6, #e9f0f8) border-box;
+    border-width: 2px;
+    border-radius: 16px;
 }
 
 .adv-card-2,
 .adv-card-4 {
     /* background: linear-gradient(90deg, #d2f1f5, #f0f6fe);
     border-image: linear-gradient(90deg, #0acfe9, #f0f6fe) 1; */
-      background:
-    linear-gradient(90deg,#d2f1f7, #f0f6fe) padding-box,
-    linear-gradient(90deg, #31adc1, #f0f6fe) border-box;
+    background:
+        linear-gradient(90deg, #d2f1f7, #f0f6fe) padding-box,
+        linear-gradient(90deg, #31adc1, #f0f6fe) border-box;
     border-width: 2px;
     border-radius: 16px;
 }
@@ -1157,7 +1172,7 @@ body {
 
 .campus-tomorrow {
     padding: 0;
-    height: 60vh;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1228,11 +1243,11 @@ body {
 }
 
 .cta-btn {
-background-color: white;
+    background-color: white;
     color: #5b6cf4;
     border: none;
     border-radius: 50px;
-    font-weight:600;
+    font-weight: 600;
     padding: 14px 40px;
     font-size: 1rem;
     cursor: pointer;
@@ -1269,25 +1284,34 @@ background-color: white;
 
 .gallery-item {
     border-radius: 16px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    overflow: hidden;
+    position: relative;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .gallery-top {
     grid-column: 1 / 3;
     height: 150px;
-    background-position-y: -9.3rem;
+    background-position-y: -8rem;
+    background-size: cover;
 }
 
 .gallery-mid-left,
 .gallery-mid-right {
-    height: 95px;
+    height: 165px;
+    background-size: cover;
 }
 
 .gallery-bottom-left,
 .gallery-bottom-right {
-    height: 95px;
+    height: 165px;
+    background-size: cover;
 }
 
 /* Scholarship Program */
@@ -1600,7 +1624,7 @@ background-color: white;
 }
 
 .hero-badge {
-    width: 19.8rem;
+    width: 11.8rem;
 }
 
 .hero-logo img {
@@ -1719,6 +1743,28 @@ background-color: white;
     .hero-info-grid {
         grid-template-columns: 1fr;
         max-width: 100%;
+        gap: 12px;
+    }
+
+    .info-card {
+        padding: 14px;
+        max-width: 100%;
+        align-items: center;
+        text-align: center;
+    }
+
+    .info-card h4 {
+        font-size: 0.95rem;
+        width: 100%;
+    }
+
+    .info-card p {
+        font-size: 0.85rem;
+        width: 100%;
+    }
+
+    .card-icon {
+        align-self: center;
     }
 
     .advantage-grid {
@@ -1750,16 +1796,6 @@ background-color: white;
     .section.testimonials {
         padding-bottom: 30px !important;
     }
-
-    .placement-grid {
-        flex-direction: column;
-        gap: 30px;
-        height: auto;
-    }
-
-    .placement-divider {
-        display: none;
-    }
 }
 
 @media (max-width: 770px) {
@@ -1767,6 +1803,7 @@ background-color: white;
     .container {
         padding: 0 16px;
     }
+
 
     .hero {
         padding: 30px 0;
@@ -1923,11 +1960,26 @@ background-color: white;
     .cta-gallery {
         justify-content: center;
         width: 100%;
+        grid-template-columns: 1fr;
+        /* Single column for mobile */
+    }
+
+    .gallery-top {
+        grid-column: span 1;
+        /* Reset to single column */
     }
 
     .gallery-item {
         width: 100%;
-        height: 200px;
+        height: auto !important;
+        /* Allow natural height */
+    }
+
+    .gallery-item img {
+        height: auto;
+        width: 100%;
+        object-fit: cover;
+        /* Maintain aspect ratio filling width */
     }
 
     /* Scholarship */
@@ -1949,10 +2001,6 @@ background-color: white;
         align-items: center;
     }
 
-    .bank-logo-item {
-        display: flex;
-        justify-content: center;
-    }
 
     .vertical-divider {
         display: none;
@@ -1985,7 +2033,13 @@ background-color: white;
         text-align: center;
         align-items: center;
     }
+
+    .propelld {
+        position: relative;
+        bottom: 29px;
+    }
 }
+
 
 @media (max-width: 480px) {
 
@@ -2008,11 +2062,33 @@ background-color: white;
     }
 
     .hero-subtitle p {
-        font-size: 14px;
+        font-size: 13px;
     }
 
     .info-card {
         padding: 16px;
+        gap: 6px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .info-card h4 {
+        font-size: 0.9rem;
+        margin-bottom: 4px;
+        width: 100%;
+    }
+
+    .info-card p {
+        font-size: 0.8rem;
+        line-height: 1.4;
+        width: 100%;
+    }
+
+    .card-icon {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 6px;
+        align-self: center;
     }
 
     .hero-form-container {
@@ -2042,7 +2118,7 @@ background-color: white;
 
     .gallery-item {
         width: 100%;
-        height: 180px;
+        height: auto !important;
     }
 
     .campus-card,
@@ -2074,6 +2150,13 @@ background-color: white;
     .cta-pill-btn {
         width: 100%;
         text-align: center;
+    }
+}
+
+@media (max-width: 376px) {
+    .hero-subtitle p {
+        font-size: 12px;
+        text-align: start;
     }
 }
 
@@ -2111,6 +2194,8 @@ background-color: white;
     }
 }
 
+
+
 @media (max-width: 1024px) {
     .placement {
         height: auto !important;
@@ -2123,6 +2208,7 @@ background-color: white;
         flex-direction: column;
     }
 }
+
 
 @media (max-width: 1019px) {
     .placement .container {
@@ -2228,52 +2314,57 @@ background-color: white;
     padding-left: 30px;
     position: relative;
 }
+
 .mirai-signature {
-  margin-top: 40px;
-  margin-bottom: 90px;
-  text-align: center;
-  font-size: 30px;
-  font-weight: 600;
-  line-height: 1.4;
-  color: white;
-  font-family: "Poppins", "Inter", sans-serif;
-  letter-spacing: 0.5px;
+    margin-top: 40px;
+    margin-bottom: 90px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: white;
+    font-family: "Poppins", "Inter", sans-serif;
+    letter-spacing: 0.5px;
 }
 
 
 .heart {
-  display: inline-block;
-  animation: pulse 1.8s infinite ease-in-out;
+    display: inline-block;
+    animation: pulse 1.8s infinite ease-in-out;
 }
 
 @keyframes pulse {
-  0%, 100% {
-    transform: scale(1.9);
-    filter: drop-shadow(0 0 0px rgba(33, 85, 227, 0.7));
-  }
-  50% {
-    transform: scale(1.25);
-    filter: drop-shadow(0 0 10px rgb(42, 103, 224));
-  }
+
+    0%,
+    100% {
+        transform: scale(1.7);
+        filter: drop-shadow(0 0 0px rgba(33, 85, 227, 0.7));
+    }
+
+    50% {
+        transform: scale(1.25);
+        filter: drop-shadow(0 0 10px rgb(42, 103, 224));
+    }
 }
+
 .mirai-signature {
-  margin-top: 40px;
-  margin-bottom: 90px;
-  text-align: center;
+    margin-top: 40px;
+    margin-bottom: 90px;
+    text-align: center;
 
-  font-size: clamp(18px, 4vw, 30px);
-  max-width: 90%;
-  margin-left: auto;
-  margin-right: auto;
+    font-size: clamp(18px, 4vw, 30px);
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
 
-  font-weight: 600;
-  line-height: 1.4;
-  color: rgb(236, 228, 228);
-  font-family: "Poppins", "Inter", sans-serif;
-  letter-spacing: 0.5px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: rgb(236, 228, 228);
+    font-family: "Poppins", "Inter", sans-serif;
+    letter-spacing: 0.5px;
 
-  word-wrap: break-word;
-  overflow-wrap: break-word;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 
@@ -2358,12 +2449,10 @@ background-color: white;
 .placement-divider {
     width: 2px;
     height: 120px;
-    background: linear-gradient(
-        to bottom,
-        transparent,
-        rgba(233, 225, 225, 0.6),
-        transparent
-    );
+    background: linear-gradient(to bottom,
+            transparent,
+            rgba(233, 225, 225, 0.6),
+            transparent);
 }
 
 
@@ -2384,7 +2473,7 @@ background-color: white;
     }
 
     .timeline {
-        padding-left: 32px;
+        padding-left: 24px;
     }
 
     .dot {
