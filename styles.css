@@ -1298,8 +1298,11 @@ body {
 .gallery-top {
     grid-column: 1 / 3;
     height: 150px;
-    background-position-y: -8rem;
+    aspect-ratio: 16 / 9;
+    width: 100%;
     background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .gallery-mid-left,
@@ -1331,10 +1334,7 @@ body {
     text-align: left;
     height: 200px;
     transition: all 0.3s ease; */
-    background: linear-gradient(180deg,
-            #84d1db 0%,
-            #f0f1f2 55%,
-            #ffffff 100%);
+    background: linear-gradient(180deg, #f4fbff 0%, #ffffff 100%);
 
     padding: 0px 20px;
     border-radius: 16px;
@@ -1357,7 +1357,7 @@ body {
 }
 
 .scholarship .container {
-    background: linear-gradient(180deg, #ddf4f8f0 7%, #ffffff 45%, #ffffff 100% 100%);
+    background: linear-gradient(180deg, #f4fbff 0%, #ffffff 100%);
     position: relative;
     padding-top: 2rem;
 
@@ -1714,6 +1714,10 @@ body {
         gap: 40px;
     }
 
+    .gallery-top {
+        background-position-y: -12.2rem;
+    }
+
     .hero,
     .section,
     .campuses-section,
@@ -1797,73 +1801,6 @@ body {
         padding-bottom: 30px !important;
     }
 }
-
-/* Campus of Tomorrow - Responsive for screens below 800px */
-@media (max-width: 800px) {
-    .campus-tomorrow {
-        height: auto !important;
-        padding: 40px 0 !important;
-    }
-
-    .cta-banner {
-        flex-direction: column;
-        gap: 24px;
-        align-items: stretch;
-    }
-
-    .cta-content {
-        flex: 1;
-        width: 100%;
-        min-height: 300px;
-        padding: 40px 30px;
-        text-align: center;
-        align-items: center;
-        border-radius: 20px;
-    }
-
-    .cta-content h2 {
-        font-size: 2rem;
-        margin-bottom: 12px;
-    }
-
-    .cta-content p {
-        font-size: 1rem;
-        margin-bottom: 24px;
-    }
-
-    .cta-btn {
-        width: auto;
-        padding: 12px 36px;
-    }
-
-    .cta-gallery {
-        width: 100%;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-    }
-
-    .gallery-top {
-        grid-column: 1 / 3;
-        height: 180px;
-        background-position: center;
-    }
-
-    .gallery-mid-left,
-    .gallery-mid-right {
-        height: 140px;
-    }
-
-    .gallery-bottom-left,
-    .gallery-bottom-right {
-        height: 140px;
-    }
-
-    .gallery-item {
-        border-radius: 12px;
-    }
-}
-
 
 @media (max-width: 770px) {
 
@@ -2007,6 +1944,9 @@ body {
         flex-direction: column;
         align-items: center;
         text-align: center;
+    }
+    .placement-divider {
+        display: none;
     }
 
     /* Campus of Tomorrow */
@@ -2186,13 +2126,17 @@ body {
     .gallery-item {
         width: 100%;
         height: auto !important;
+        background-position: center;
     }
 
-    .campus-card,
     .testimonial-card,
     .adv-card,
     .scholarship-card {
         padding: 20px;
+    }
+
+    .campus-card {
+        height: auto;
     }
 
     .life-card {
@@ -2545,5 +2489,75 @@ body {
 
     .dot {
         left: -30px;
+    }
+}
+
+/* Campus of Tomorrow - Responsive for screens below 800px */
+@media (max-width: 800px) {
+    .campus-tomorrow {
+        height: auto !important;
+        padding: 40px 0 !important;
+    }
+
+    .cta-banner {
+        flex-direction: column;
+        gap: 24px;
+        align-items: stretch;
+    }
+
+    .cta-content {
+        flex: 1;
+        width: 100%;
+        min-height: 300px;
+        padding: 40px 30px;
+        text-align: center;
+        align-items: center;
+        border-radius: 20px;
+    }
+
+    .cta-content h2 {
+        font-size: 2rem;
+        margin-bottom: 12px;
+    }
+
+    .cta-content p {
+        font-size: 1rem;
+        margin-bottom: 24px;
+    }
+
+    .cta-btn {
+        width: auto;
+        padding: 12px 36px;
+    }
+
+    .cta-gallery {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .gallery-top {
+        grid-column: 1 / 3;
+        height: 180px;
+        background-position: center;
+    }
+
+    .gallery-mid-left,
+    .gallery-mid-right {
+        height: 140px;
+    }
+
+    .gallery-bottom-left,
+    .gallery-bottom-right {
+        height: 140px;
+    }
+
+    .gallery-item {
+        width: 100%;
+        height: 150px !important;
+        /* Ensure visibility */
+        border-radius: 12px;
+        background-position: center;
     }
 }
