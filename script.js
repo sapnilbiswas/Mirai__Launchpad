@@ -170,8 +170,12 @@ let lifeSpeed = 0.6;
 //   DUPLICATE CARDS FOR TRUE INFINITE LOOP
 
 const lifeOriginalCards = [...lifeTrack.children];
+
+// clone ONLY non-video cards
 lifeOriginalCards.forEach(card => {
-  lifeTrack.appendChild(card.cloneNode(true));
+  if (!card.classList.contains("is-video")) {
+    lifeTrack.appendChild(card.cloneNode(true));
+  }
 });
 
 //   CALCULATE WIDTH OF ONE FULL SET
@@ -204,13 +208,32 @@ function wrapLifeCarousel() {
 
 //  AUTO ANIMATION
 
+
+function updateCenterCard() {
+  const cards = document.querySelectorAll(".mirai-life-card");
+  const centerX = lifeSection.offsetWidth / 2;
+
+  cards.forEach(card => {
+    const rect = card.getBoundingClientRect();
+    const cardCenter = rect.left + rect.width / 2;
+
+    card.classList.toggle(
+      "is-center",
+      Math.abs(cardCenter - centerX) < rect.width / 2
+    );
+  });
+}
+
 function animateLifeCarousel() {
-  lifeTranslateX -= lifeSpeed;
-  wrapLifeCarousel();
-  lifeTrack.style.transform = `translateX(${lifeTranslateX}px)`;
+  if (!isCarouselPaused) {
+    lifeTranslateX -= lifeSpeed;
+    wrapLifeCarousel();
+    lifeTrack.style.transform = `translateX(${lifeTranslateX}px)`;
+    updateCenterCard();
+  }
   requestAnimationFrame(animateLifeCarousel);
 }
-animateLifeCarousel();
+
 
 //  MOUSE DRAG (NO CURSOR CHANGE)
 
@@ -235,13 +258,168 @@ lifeSection.addEventListener("mousemove", (e) => {
 lifeSection.addEventListener(
   "wheel",
   (e) => {
-    // Ignore vertical mouse wheel
+    // Only care about horizontal trackpad scroll
     if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
 
-    // Allow horizontal trackpad swipe
     e.preventDefault();
+
+    // Pause auto animation while user scrolls
+    isCarouselPaused = true;
+
     lifeTranslateX -= e.deltaX;
     wrapLifeCarousel();
+    lifeTrack.style.transform = `translateX(${lifeTranslateX}px)`;
+
+    // Resume animation shortly after scroll ends
+    clearTimeout(lifeSection._scrollTimeout);
+    lifeSection._scrollTimeout = setTimeout(() => {
+      if (!isVideoPlaying) {
+        isCarouselPaused = false;
+      }
+    }, 120);
   },
   { passive: false }
 );
+
+
+/* ================= VIDEO CONTROL ================= */
+
+let activeVideoCard = null;
+
+let isCarouselPaused = false;   // ← ADD THIS LINE
+
+let isVideoPlaying = false;
+
+let activePlayer = null;
+const players = {};
+
+requestAnimationFrame(animateLifeCarousel);
+function stopVideo(card) {
+  const iframe = card.querySelector("iframe");
+  const videoId = card.dataset.videoId;
+  iframe.src = `https://www.youtube.com/embed/${videoId}?rel=0`;
+  card.classList.remove("is-playing");
+}
+
+
+function onYouTubeIframeAPIReady() {
+  document.querySelectorAll(".mirai-life-card.is-video").forEach(card => {
+    const videoId = card.dataset.videoId;
+    const iframe = card.querySelector("iframe");
+    const iframeId = iframe.id;
+
+    card.addEventListener("click", (e) => {
+      e.stopPropagation();
+
+      if (!players[videoId]) {
+        players[videoId] = new YT.Player(iframe.id, {
+          events: {
+            onStateChange: handleVideoState
+          }
+        });
+      }
+
+      players[videoId].playVideo();
+      activePlayer = players[videoId];
+    });
+  });
+}
+
+function handleVideoState(event) {
+  const card = event.target.getIframe().closest(".mirai-life-card");
+
+  if (event.data === YT.PlayerState.PLAYING) {
+    isVideoPlaying = true;
+    isCarouselPaused = true;
+    card.classList.add("is-playing");
+  }
+
+  if (
+    event.data === YT.PlayerState.PAUSED ||
+    event.data === YT.PlayerState.ENDED
+  ) {
+    isVideoPlaying = false;
+    isCarouselPaused = false;
+    card.classList.remove("is-playing");
+  }
+}
+
+document.addEventListener("click", (e) => {
+  const clickedVideo = e.target.closest(".mirai-life-card.is-video");
+
+  // Clicked outside any video card
+  if (!clickedVideo && activePlayer) {
+    activePlayer.pauseVideo();
+    isVideoPlaying = false;
+    isCarouselPaused = false;
+
+    document
+      .querySelectorAll(".mirai-life-card.is-playing")
+      .forEach(card => card.classList.remove("is-playing"));
+  }
+});
+
+
+lifeSection.addEventListener("mouseenter", () => {
+  isCarouselPaused = true;
+});
+
+lifeSection.addEventListener("mouseleave", () => {
+  // Resume ONLY if no video is playing
+  if (!isVideoPlaying) {
+    isCarouselPaused = false;
+  }
+});
+
+document.addEventListener("click", (e) => {
+  const clickedVideo = e.target.closest(".mirai-life-card.is-video");
+
+  if (!clickedVideo && activePlayer) {
+    activePlayer.pauseVideo();
+    isCarouselPaused = false;
+    activePlayer = null;
+
+    document
+      .querySelectorAll(".mirai-life-card.is-playing")
+      .forEach(card => card.classList.remove("is-playing"));
+  }
+});
+
+
+const carousel = document.querySelector(".mirai-life-carousel");
+
+carousel.addEventListener("mouseenter", () => {
+  isCarouselPaused = true;
+});
+
+carousel.addEventListener("mouseleave", () => {
+  // resume only if no video is playing
+  if (!activePlayer) {
+    isCarouselPaused = false;
+  }
+});
+
+
+const videoObserver = new IntersectionObserver(
+  (entries, observer) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+
+      const iframe = entry.target;
+      if (!iframe.src) {
+        iframe.src = iframe.dataset.src; // 🔥 async load
+      }
+
+      observer.unobserve(iframe); // load only once
+    });
+  },
+  {
+    root: document.querySelector(".mirai-life-carousel"),
+    rootMargin: "300px", // preload before visible
+    threshold: 0.1
+  }
+);
+
+// Observe ONLY video iframes
+document.querySelectorAll(".mirai-life-card.is-video iframe")
+  .forEach(iframe => videoObserver.observe(iframe));

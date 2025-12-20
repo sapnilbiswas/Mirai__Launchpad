@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+place@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 * {
     box-sizing: border-box;
@@ -29,7 +29,7 @@ body {
     background: linear-gradient(180deg, #f4fbff 0%, #ffffff 100%);
     padding: 0;
     /* reduced height */
-    height: 80vh;
+    height: 70vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -49,15 +49,15 @@ body {
     display: flex;
     align-items: center;
     /* Align items centered vertically */
-    gap: 12px;
-    margin-bottom: 24px;
+    gap: 10px;
+    margin-bottom: 12px;
     margin-top: 0;
     /* Reset negative margin */
 }
 
 .logo-icon {
-    width: 65px;
-    height: 65px;
+    width: 48px;
+    height: 48px;
     object-fit: contain;
 }
 
@@ -70,7 +70,7 @@ body {
 }
 
 .logo-mirai {
-    font-size: 36px;
+    font-size: 26px;
     font-weight: 700;
     color: #1e3a8a;
     line-height: 1;
@@ -86,23 +86,23 @@ body {
 
 .hero-title {
     font-family: 'Inter', sans-serif;
-    font-size: 45px;
+    font-size: 34px;
     font-weight: 800;
     line-height: 1.08;
     color: #1e3a8a;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 
 .hero-badge {
     display: inline-block;
-    padding: 8px 20px;
-    font-size: 24px;
+    padding: 6px 14px;
+    font-size: 16px;
     font-weight: 600;
-    border-radius: 10px;
+    border-radius: 8px;
     background: linear-gradient(to bottom, #3F51B5 0%, #00BCD4 100%);
     color: #ffffff;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     line-height: 1;
 }
 
@@ -136,9 +136,9 @@ body {
 .hero-info-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    margin-top: 1%;
-    max-width: 650px;
+    gap: 10px;
+    margin-top: 10px;
+    max-width: 600px;
 }
 
 .info-card {
@@ -157,11 +157,11 @@ body {
 .hero-subtitle p {
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-size: 17px;
+    gap: 8px;
+    font-size: 14px;
     font-weight: 500;
     color: #475569;
-    margin: 6px 0;
+    margin: 4px 0;
 }
 
 .hero-subtitle i {
@@ -224,22 +224,23 @@ body {
 
 .hero-form-container {
     height: auto;
-    min-height: 450px;
-    margin-top: 0;
-    width: 480px;
+    min-height: auto;
+    margin-top: 50px;
+    width: 380px;
     background: #ffffff;
-    border-radius: 20px;
-    padding: 24px;
+    border-radius: 16px;
+    padding: 20px;
     border: 1.5px solid #3b82f6;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    margin-right: 50px;
 }
 
 /* Tabs */
 .form-header {
     display: flex;
     border-bottom: 1px solid #e5e7eb;
-    margin-bottom: 20px;
-    margin-top: 0;
+    margin-bottom: 15px;
+    margin-top: 10px;
 }
 
 .form-header button {
@@ -261,20 +262,20 @@ body {
 
 /* Form fields */
 .form-group {
-    margin-bottom: 18px;
+    margin-bottom: 12px;
 }
 
 .form-group input,
 .form-group select {
     width: 100%;
-    padding: 9px 10px;
-    border-radius: 14px;
+    padding: 8px 10px;
+    border-radius: 12px;
     border: 1.5px solid #4fb6c2;
     background-color: #d9f2f6;
-    font-size: 16px;
+    font-size: 14px;
     outline: none;
     box-sizing: border-box;
-    height: 50p;
+    height: 38px;
 }
 
 /* Phone field */
@@ -285,8 +286,8 @@ body {
 }
 
 .country-code {
-    min-width: 64px;
-    height: 56px;
+    min-width: 50px;
+    height: 38px;
     background-color: #e6f6f9;
     border-radius: 14px;
     border: 1.5px solid #4fb6c2;
@@ -310,20 +311,56 @@ body {
 .submit-btn {
     width: 50%;
     margin: 0px auto 0;
-    padding: 5px;
+    padding: 8px;
     background: linear-gradient(to bottom, #3F51B5 0%, #00BCD4 100%);
     color: white;
     border: none;
     border-radius: 18px;
     font-weight: 700;
-    font-size: 18px;
+    font-size: 16px;
     cursor: pointer;
     display: block;
+    transition: 0.3s;
 }
 
 .submit-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 18px rgba(0, 114, 255, 0.3);
+}
+
+.login-extras {
+    display: none;
+    /* Hidden by default (Register mode) */
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 0 5px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+#toggle-auth-mode {
+    color: #2563eb;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+#toggle-auth-mode:hover {
+    color: #1e40af;
+}
+
+#forgot-password {
+    background: none;
+    border: none;
+    color: #64748b;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 0;
+}
+
+#forgot-password:hover {
+    color: #2563eb;
 }
 
 
@@ -683,7 +720,14 @@ body {
     height: 100%;
     border: none;
     pointer-events: none;
-    /* 👈 allows hover + drag */
+}
+
+.mirai-life-card.is-video {
+    cursor: pointer;
+}
+
+.mirai-life-card.is-playing iframe {
+    pointer-events: auto;
 }
 
 /* HOVER LIFT */
@@ -691,52 +735,6 @@ body {
     transform: scale(1.08);
     z-index: 50;
     box-shadow: 0 40px 70px rgba(0, 0, 0, 0.25);
-}
-
-/* VIDEO CARD */
-.video-card {
-    background: #000;
-    overflow: hidden;
-}
-
-/* Thumbnail */
-.video-thumb {
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Play button */
-.play-btn {
-    width: 60px;
-    height: 60px;
-    background: rgba(0, 0, 0, 0.6);
-    color: #fff;
-    font-size: 24px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.2s ease;
-}
-
-.video-card:hover .play-btn {
-    transform: scale(1.1);
-    background: rgba(220, 38, 38, 0.9);
-    /* YouTube Red-ish */
-}
-
-/* IFRAME */
-.video-card iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
 }
 
 
@@ -949,12 +947,24 @@ body {
 /* Gradients */
 .adv-card-1,
 .adv-card-3 {
-    background: linear-gradient(135deg, #EEF2FF 0%, #E0E7FF 100%);
+    /* background: linear-gradient(90deg, , #e9f0f8);
+     border-image: linear-gradient(90deg, #1136da , #e9f0f8 ) 1; */
+    background:
+    linear-gradient(90deg,#dce0f2, #e9f0f8) padding-box,
+    linear-gradient(90deg, #7b87b6, #e9f0f8) border-box;
+     border-width: 2px;
+     border-radius: 16px;
 }
 
 .adv-card-2,
 .adv-card-4 {
-    background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%);
+    /* background: linear-gradient(90deg, #d2f1f5, #f0f6fe);
+    border-image: linear-gradient(90deg, #0acfe9, #f0f6fe) 1; */
+      background:
+    linear-gradient(90deg,#d2f1f7, #f0f6fe) padding-box,
+    linear-gradient(90deg, #31adc1, #f0f6fe) border-box;
+    border-width: 2px;
+    border-radius: 16px;
 }
 
 .adv-card:hover {
@@ -1091,7 +1101,7 @@ body {
 
 .placement-divider {
     width: 1px;
-    height: 60px;
+    height: 50px;
     /* Adjust based on content height */
     background-color: rgba(255, 255, 255, 0.2);
     margin-top: 10px;
@@ -1177,7 +1187,7 @@ body {
     background-size: cover;
     background-position: left center;
     background-repeat: no-repeat;
-    height: 250px;
+    height: 100%;
 }
 
 
@@ -1218,19 +1228,22 @@ body {
 }
 
 .cta-btn {
-    background-color: white;
+background-color: white;
     color: #5b6cf4;
     border: none;
     border-radius: 50px;
-    font-weight: 600;
+    font-weight:600;
     padding: 14px 40px;
     font-size: 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
     height: auto;
     width: auto;
-    height: 3.3rem;
+    height: 2.8rem;
     width: 13rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -1557,7 +1570,7 @@ body {
 
 /* Footer */
 .footer {
-    background-color: var(--white);
+    background-color: rgb(15, 118, 186);
     border-top: 1px solid var(--gray-200);
     padding: 50px 0 20px;
 }
@@ -1716,6 +1729,7 @@ body {
         width: 100%;
         max-width: 500px;
         height: 250px;
+        justify-self: center;
     }
 
     .campus-grid {
@@ -2090,9 +2104,6 @@ body {
     }
 }
 
-
-
-
 @media (max-width: 1024px) {
     .hero-content {
         margin: 0 auto;
@@ -2130,6 +2141,13 @@ body {
     font-size: 30px;
 }
 
+@media(max-width: 767px) {
+    .foot {
+        font-size: 20px;
+        text-align: center;
+    }
+}
+
 
 .admission-wrapper {
     max-width: 1207px;
@@ -2161,7 +2179,7 @@ body {
 
 .mirai-macbook {
     background-size: contain;
-    max-height: 400px;
+    max-height: 470px;
     /* Keep the height limit */
     max-width: 100%;
     /* Ensure it doesn't overflow */
@@ -2174,7 +2192,8 @@ body {
 
 /* BADGE */
 .macbook-badge {
-    margin-top: 16px;
+    margin-top: 12px;
+    margin-bottom: 90px;
     display: inline-block;
     background: #fff;
     color: #2563eb;
@@ -2208,12 +2227,60 @@ body {
     padding-left: 30px;
     position: relative;
 }
+.mirai-signature {
+  margin-top: 40px;
+  margin-bottom: 90px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: white;
+  font-family: "Poppins", "Inter", sans-serif;
+  letter-spacing: 0.5px;
+}
+
+
+.heart {
+  display: inline-block;
+  animation: pulse 1.8s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1.9);
+    filter: drop-shadow(0 0 0px rgba(33, 85, 227, 0.7));
+  }
+  50% {
+    transform: scale(1.25);
+    filter: drop-shadow(0 0 10px rgb(42, 103, 224));
+  }
+}
+.mirai-signature {
+  margin-top: 40px;
+  margin-bottom: 90px;
+  text-align: center;
+
+  font-size: clamp(18px, 4vw, 30px);
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+
+  font-weight: 600;
+  line-height: 1.4;
+  color: rgb(236, 228, 228);
+  font-family: "Poppins", "Inter", sans-serif;
+  letter-spacing: 0.5px;
+
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
 
 /* LINE */
 .timeline::before {
     content: "";
     position: absolute;
-    left: 10px;
+    left: 0;
     top: 0;
     height: 100%;
     width: 2px;
@@ -2286,6 +2353,20 @@ body {
         flex-direction: column;
     }
 }
+
+.placement-divider {
+    width: 2px;
+    height: 120px;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(233, 225, 225, 0.6),
+        transparent
+    );
+}
+
+
+
 
 @media (max-width: 480px) {
     body {
