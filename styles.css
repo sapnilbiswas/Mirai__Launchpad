@@ -48,10 +48,12 @@ body {
 
 .hero-logo {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    /* Align items centered vertically */
     gap: 12px;
-    margin-bottom: 35px;
-    margin-top: -70px;
+    margin-bottom: 24px;
+    margin-top: 0;
+    /* Reset negative margin */
 }
 
 .logo-icon {
@@ -691,6 +693,46 @@ body {
     z-index: 50;
     box-shadow: 0 40px 70px rgba(0, 0, 0, 0.25);
 }
+
+/* VIDEO CARD */
+.video-card {
+    background: #000;
+    overflow: hidden;
+}
+
+/* Thumbnail */
+.video-thumb {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    cursor: pointer;
+}
+
+/* Play button */
+.play-btn {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 72px;
+    height: 72px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    font-size: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* IFRAME */
+.video-card iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
 
 @media (max-width: 768px) {
     .hero {
@@ -1719,6 +1761,11 @@ body {
         text-align: center;
         align-items: center;
         max-width: 100%;
+    }
+
+    .hero-logo {
+        justify-content: center;
+        margin-bottom: 20px;
     }
 
     .hero-title {
