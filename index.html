@@ -44,7 +44,8 @@
             <!-- LEFT CONTENT -->
             <div class="hero-content">
                 <div class="hero-logo">
-                    <img src="mirai-logo (1).png" alt="Mirai Logo">
+                    <img src="miraLogo.png" alt="Mirai Logo">
+                    <div class="countdown"></div>
                 </div>
 
                 <h1 class="hero-title" style="color:#4769ae">
@@ -74,8 +75,8 @@
                         <p>Class 12 students with Physics, Chemistry and Mathematics</p>
                     </div>
                     <div class="info-card">
-                        <div class="card-icon">
-                            <img src="Hero2.svg" alt="" srcset="" />
+                        <div class="card-icon program_dur">
+                            <img src="Hero4.svg" alt="" srcset="" />
                         </div>
                         <h4>Program Duration</h4>
                         <p>4 Years Full Time Undergraduate Program</p>
@@ -88,8 +89,9 @@
                         <p>26th August, 2025</p>
                     </div>
                     <div class="info-card">
-                        <div class="card-icon">
-                            <img src="Hero4.svg" alt="" srcset="" />
+                        <div class="card-icon last_date">
+                            
+                            <img src="Hero2.svg" alt="" srcset="" />
                         </div>
                         <h4>Last Date to Apply</h4>
                         <p>30th August, 2025</p>
@@ -114,34 +116,35 @@
                     <div class="form-group">
                         <input type="email" placeholder="Enter Email Address *" required />
                     </div>
-
                     <div class="form-group phone-group">
                         <span class="country-code" style="background-color: #e9e2e2">+91</span>
                         <input type="tel" placeholder="Enter Mobile Number *" required />
                     </div>
-
+                    
                     <div class="form-group">
                         <input type="text" placeholder="Enter OTP" required />
                     </div>
-
+                    <button>Forgot Password</button>
+                    
                     <div class="form-group">
-                        <select required>
-                            <option value="" disabled selected>
-                                Select Year Of Passing Class 12th
+                        <select required style="line-height: normal;">
+                            <option value="" disabled selected >
+                                <p style="font-size: 10px;">Select Year Of Passing Class 12th</p>
                             </option>
+                            <option value="2023">2023</option>
                             <option value="2024">2024</option>
                             <option value="2025">2025</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <select required>
+                        <select required style="line-height: normal;">
                             <option value="" disabled selected>
-                                Select Class 12th Stream
+                                <p>Select Class 12th Stream</p>
                             </option>
-                            <option value="maths">Maths</option>
-                            <option value="bio">Bio</option>
-                            <option value="both">Maths And Bio</option>
+                            <option value="maths">PCM</option>
+                            <option value="bio">PCMB</option>
+                            <option value="both">PCB</option>
                         </select>
                     </div>
 
@@ -187,8 +190,8 @@
     </section>
 
     <!-- Admission Process -->
-    <section class="section admission">
-        <div class="container">
+    <!-- <section class="section admission"> -->
+        <!-- <div class="container">
             <div class="admission-header-card">
                 <h2>Admission Process</h2>
                 <p>From Application to Enrolment keep an eye on these key dates.</p>
@@ -216,46 +219,107 @@
                     <div class="step-value">Within 5 days of interview</div>
                 </div>
             </div>
+        </div> -->
+    <!-- </section> -->
+    <section class="admission-wrapper">
+
+  <!-- LEFT CARD -->
+  <div class="left-card">
+    <img src="mirai_macbook.png" alt="" class="mirai-macbook">
+  </div>
+
+  <!-- RIGHT CONTENT -->
+  <div class="right-content">
+    <h1>Admission Process</h1>
+    <p class="subtitle">Be in the top 20% for our exclusive cohort.</p>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <span class="dot"></span>
+        <div>
+          <h3>Apply Online</h3>
+          <p>Register and fill out an online application form.</p>
         </div>
-    </section>
+      </div>
 
-    <!-- Life @ Mirai -->
-    <section class="section life-at-mirai">
-        <div class="container">
-            <h2 class="section-title">Life @ Mirai</h2>
-            <p class="section-subtitle">Life Beyond Classrooms</p>
+      <div class="timeline-item">
+        <span class="dot"></span>
+        <div>
+          <h3>Take the MAINS test</h3>
+          <p>Take the Mirai National Screening (MAINS).</p>
+        </div>
+      </div>
 
-            <div class="life-carousel-container">
-                <!-- <button class="carousel-btn prev" id="life-prev">❮</button> -->
-                <div class="opacity-left"></div>
-               <div class="life-carousel">
-    <div class="life-track">
+      <div class="timeline-item">
+        <span class="dot"></span>
+        <div>
+          <h3>Appear for Personal Interview</h3>
+          <p>Shortlisted candidates will be invited for an interview with industry experts.</p>
+        </div>
+      </div>
 
-        <!-- ORIGINAL CARDS -->
-        <div class="life-card" style="background-image: url('interviewroom.png')"></div>
-        <div class="life-card" style="background-image: url('Mac_Lab.png')"></div>
-        <div class="life-card" style="background-image: url('MiraiVerse-Lab.png')"></div>
-        <div class="life-card" style="background-image: url('clusterroom.jpeg')"></div>
-        <div class="life-card" style="background-image: url('hitech.jpeg')"></div>
-        <div class="life-card" style="background-image: url('Rathinam.jpg')"></div>
+      <div class="timeline-item">
+        <span class="dot"></span>
+        <div>
+          <h3>Receive your Offer Letter</h3>
+          <p>Offer Letters will be sent to selected candidates.</p>
+        </div>
+      </div>
 
-        <!-- DUPLICATE (EXACT SAME ORDER) -->
-        <div class="life-card" style="background-image: url('interviewroom.png')"></div>
-        <div class="life-card" style="background-image: url('Mac_Lab.png')"></div>
-        <div class="life-card" style="background-image: url('MiraiVerse-Lab.png')"></div>
-        <div class="life-card" style="background-image: url('clusterroom.jpeg')"></div>
-        <div class="life-card" style="background-image: url('hitech.jpeg')"></div>
-        <div class="life-card" style="background-image: url('Rathinam.jpg')"></div>
+      <div class="timeline-item">
+        <span class="dot"></span>
+        <div>
+          <h3>Block your seat</h3>
+          <p>Admission is confirmed upon submission of required fees and documents.</p>
+        </div>
+      </div>
 
     </div>
-</div>
-             <div class="opacity-right"></div>
+  </div>
+
+    </section>
+
+    <!-- ================= LIFE @ MIRAI ================= -->
+    <section class="mirai-life">
+        <div class="mirai-life-header">
+            <h2>Life @ Mirai</h2>
+            <p>Life Beyond Classrooms</p>
+        </div>
+
+    <div class="mirai-life-carousel">
+        <div class="mirai-life-viewport">
+            <div class="mirai-life-track">
+            <!-- ORIGINAL CARDS -->
+                <div class="mirai-life-card" style="background-image:url('interviewroom.png')"></div>
+                <div class="mirai-life-card" style="background-image:url('Mac_Lab.png')"></div>
+                <div class="mirai-life-card" style="background-image:url('MiraiVerse-Lab.png')"></div>
+                <div class="mirai-life-card" style="background-image:url('clusterroom.jpeg')"></div>
+                <div class="mirai-life-card" style="background-image:url('hitech.jpeg')"></div>
+                <div class="mirai-life-card" style="background-image:url('Rathinam.jpg')"></div>
+                <div class="mirai-life-card">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/7n6KQ9aKSS0" allowfullscreen></iframe>
+                    </div>
                 </div>
-                
-                <!-- <button class="carousel-btn next" id="life-next">❯</button> -->
+
+                <div class="mirai-life-card">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/2_yOvbHiwFA" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="mirai-life-card">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/cc8Dg0dsOoI" allowfullscreen></iframe>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
+
     </section>
+
 
     <!-- Testimonials -->
     <section class="section testimonials">
@@ -370,7 +434,7 @@
                     <div class="adv-icon">
                         <img src="adv_5.svg" alt="">
                     </div>
-                    <h4 style="font-size: 22px">Tech Practitioners as Teachers</h4>
+                    <h4 style="font-size: 20px">Tech Practitioners as Teachers</h4>
                     <p style="color: grey;">
                         Learn directly from industry experts working with GenAI, LLMs, and
                         code copilots.
@@ -587,7 +651,7 @@
                     <div class="contact-info">
                         <div class="contact-item">
                             <span class="icon">🌐</span>
-                            <a href="https://miraisot.com">miraisot.com</a>
+                            <a href="https://miraisot.com" target="_blank">miraisot.com</a>
                         </div>
                         <div class="contact-item">
                             <span class="icon">✉️</span>
@@ -608,7 +672,9 @@
             </div>
         </div>
     </section>
-
+    <footer class="foot" style="margin-top: -460px;">
+        <p style="margin-top: 28px;">Crafted with love and passion by Mirai students, for the future we’re building together.</p>
+    </footer>
     <script src="script.js"></script>
 </body>
 
