@@ -191,17 +191,18 @@ let isVideoPlaying = false;
 /* ---------- DUPLICATE NON-VIDEO CARDS ---------- */
 const originalCards = [...lifeTrack.children];
 
+// duplicate entire set ONCE
 originalCards.forEach(card => {
-  if (!card.classList.contains("is-video")) {
-    lifeTrack.appendChild(card.cloneNode(true));
-  }
+  lifeTrack.appendChild(card.cloneNode(true));
 });
 
 /* ---------- CALCULATE WIDTH ---------- */
 let totalWidth = 0;
+
 originalCards.forEach(card => {
-  const gap = parseFloat(getComputedStyle(card).marginRight) || 28;
-  totalWidth += card.offsetWidth + gap;
+  const styles = getComputedStyle(card);
+  const gap = parseFloat(styles.marginRight) || 28;
+  totalWidth += card.getBoundingClientRect().width + gap;
 });
 
 /* ---------- START FROM CENTER ---------- */

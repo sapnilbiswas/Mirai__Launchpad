@@ -29,7 +29,7 @@ body {
     background: linear-gradient(180deg, #f4fbff 0%, #ffffff 100%);
     padding: 0;
     /* reduced height */
-    height: 70vh;
+    height: 75vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -309,6 +309,7 @@ body {
     align-items: center;
     gap: 14px;
 }
+
 /* Country code box */
 .country-code {
     width: 110px;
@@ -508,6 +509,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-top: 2rem;
 }
 
 .campus-title {
@@ -758,6 +760,10 @@ body {
     transform-origin: center center;
     /* scale upwards */
     transition: transform 0.35s ease, box-shadow 0.35s ease;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
 }
 
@@ -793,50 +799,50 @@ body {
 
 
 .video-thumb {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  border-radius: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 3;
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 3;
 }
 
 .video-overlay {
-  width: 64px;
-  height: 64px;
-  background: rgba(0, 0, 0, 0.65);
-  border-radius: 50%;
-  color: white;
-  font-size: 26px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.25s ease, background 0.25s ease;
+    width: 64px;
+    height: 64px;
+    background: rgba(0, 0, 0, 0.65);
+    border-radius: 50%;
+    color: white;
+    font-size: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.25s ease, background 0.25s ease;
 }
 
 .video-thumb:hover .video-overlay {
-  transform: scale(1.15);
-  background: rgba(0, 0, 0, 0.85);
+    transform: scale(1.15);
+    background: rgba(0, 0, 0, 0.85);
 }
 
 /* Hide iframe initially */
 .video-wrapper {
-  opacity: 0;
-  pointer-events: none;
+    opacity: 0;
+    pointer-events: none;
 }
 
 /* When playing */
 .mirai-life-card.is-playing .video-thumb {
-  display: none;
+    display: none;
 }
 
 .mirai-life-card.is-playing .video-wrapper {
-  opacity: 1;
-  pointer-events: auto;
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .yt-badge {
@@ -859,11 +865,11 @@ body {
 }
 
 .youtube-only .video-thumb {
-  display: flex !important;
+    display: flex !important;
 }
 
 .youtube-only .video-wrapper {
-  display: none !important;
+    display: none !important;
 }
 
 
@@ -965,110 +971,111 @@ body {
 
 /* mirai vs traditional */
 .mirai-edu-compare {
-  padding: 48px 16px;
-  display: flex;
-  justify-content: center;
-  font-family: "Inter", system-ui, sans-serif;
+    padding: 48px 16px;
+    display: flex;
+    justify-content: center;
+    font-family: "Inter", system-ui, sans-serif;
 }
 
 .mirai-edu-card {
-  width: 100%;
-  max-width: 1200px;
-  background: #fff;
-  border-radius: 18px;
-  padding: 40px 32px 48px;
-  box-shadow: 0 30px 40px rgba(15,23,36,.06),
-              0 6px 12px rgba(15,23,36,.04);
+    width: 100%;
+    max-width: 1200px;
+    background: #fff;
+    border-radius: 18px;
+    padding: 40px 32px 48px;
+    box-shadow: 0 30px 40px rgba(15, 23, 36, .06),
+        0 6px 12px rgba(15, 23, 36, .04);
 }
 
 .mirai-edu-title {
-  text-align: center;
-  font-size: clamp(28px, 4.5vw, 48px);
-  font-weight: 800;
-  margin-bottom: 28px;
+    text-align: center;
+    font-size: clamp(28px, 4.5vw, 48px);
+    font-weight: 800;
+    margin-bottom: 28px;
 }
 
 /* Table base */
 .mirai-edu-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0 12px; /* row gaps like cards */
-  table-layout: fixed;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 12px;
+    /* row gaps like cards */
+    table-layout: fixed;
 }
 
 /* Header */
 .mirai-edu-head {
-  padding: 14px 16px;
-  font-size: 15px;
-  font-weight: 700;
-  text-align: center;
-  border-radius: 12px;
+    padding: 14px 16px;
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 12px;
 }
 
 .mirai-edu-head--key {
-  border: 2px solid rgba(12,12,12,.08);
+    border: 2px solid rgba(12, 12, 12, .08);
 }
 
 .mirai-edu-head--mirai {
-  background: linear-gradient(90deg, #069BAD, #194CD1);
-  color: #fff;
-  box-shadow: 0 16px 28px rgba(25,76,209,.18);
+    background: linear-gradient(90deg, #069BAD, #194CD1);
+    color: #fff;
+    box-shadow: 0 16px 28px rgba(25, 76, 209, .18);
 }
 
 .mirai-edu-head--traditional {
-  border: 2px solid rgba(12,12,12,.08);
+    border: 2px solid rgba(12, 12, 12, .08);
 }
 
 /* Body rows */
 .mirai-edu-table tbody tr {
-  background: #fff;
+    background: #fff;
 }
 
 /* Cells */
 .mirai-edu-cell {
-  padding: 16px 20px;
-  font-size: 14px;
-  vertical-align: middle;
+    padding: 16px 20px;
+    font-size: 14px;
+    vertical-align: middle;
 }
 
 .mirai-edu-cell--key {
-  font-weight: 700;
-  background: linear-gradient(90deg, #fbfdff, #f8fafc);
-  border-top-left-radius: 12px;
-  border-bottom-left-radius: 12px;
+    font-weight: 700;
+    background: linear-gradient(90deg, #fbfdff, #f8fafc);
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
 }
 
 .mirai-edu-cell--mirai {
-  text-align: center;
-  font-weight: 600;
-  background:
-    linear-gradient(90deg, rgba(29,78,216,.06), rgba(29,78,216,.06)),
-    linear-gradient(90deg, #f8fbff, #f6f8ff);
+    text-align: center;
+    font-weight: 600;
+    background:
+        linear-gradient(90deg, rgba(29, 78, 216, .06), rgba(29, 78, 216, .06)),
+        linear-gradient(90deg, #f8fbff, #f6f8ff);
 }
 
 .mirai-edu-cell--traditional {
-  text-align: center;
-  color: #6b7280;
-  background: linear-gradient(90deg, #fbfdff, #f8fafc);
-  border-top-right-radius: 12px;
-  border-bottom-right-radius: 12px;
+    text-align: center;
+    color: #6b7280;
+    background: linear-gradient(90deg, #fbfdff, #f8fafc);
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
 }
 
 /* Mobile tweaks – STILL A TABLE */
 @media (max-width: 600px) {
-  .mirai-edu-card {
-    padding: 24px 16px 32px;
-  }
+    .mirai-edu-card {
+        padding: 24px 16px 32px;
+    }
 
-  .mirai-edu-cell,
-  .mirai-edu-head {
-    font-size: 13px;
-    padding: 12px;
-  }
+    .mirai-edu-cell,
+    .mirai-edu-head {
+        font-size: 13px;
+        padding: 12px;
+    }
 
-  .mirai-edu-table {
-    border-spacing: 0 10px;
-  }
+    .mirai-edu-table {
+        border-spacing: 0 10px;
+    }
 }
 
 
@@ -1556,9 +1563,9 @@ body {
 .scholarship-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    padding-left: 5%;
-    padding-right: 5%;
+    gap: 15px;
+    padding-left: 2%;
+    padding-right: 2%;
 }
 
 .scholarship-card {
@@ -1570,12 +1577,11 @@ body {
     height: 200px;
     transition: all 0.3s ease; */
     background: linear-gradient(180deg, #f4fbff 0%, #ffffff 100%);
-
-    padding: 0px 20px;
-    border-radius: 16px;
+    padding: 15px;
+    border-radius: 12px;
     border: 1.5px solid #6fcad6;
     text-align: left;
-    min-height: 160px;
+    min-height: 140px;
     display: flex;
     flex-direction: column;
     height: auto;
@@ -1595,7 +1601,10 @@ body {
     background: linear-gradient(180deg, #f4fbff 0%, #ffffff 100%);
     position: relative;
     padding-top: 2rem;
+}
 
+.scholarship .section-subtitle {
+    margin-bottom: 30px;
 }
 
 /* 
@@ -1617,14 +1626,19 @@ body {
 
 .sch-icon {
     font-size: 2rem;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     color: var(--primary-blue);
+}
+
+.sch-icon img {
+    width: 60px;
+    height: auto;
 }
 
 .scholarship-card h4 {
     color: var(--dark-blue);
-    margin-bottom: 10px;
-    font-size: 1.05rem;
+    margin-bottom: 6px;
+    font-size: 0.95rem;
 }
 
 
@@ -1632,7 +1646,7 @@ body {
 
 
 .scholarship-card p {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: var(--text-muted);
 }
 
@@ -1829,7 +1843,7 @@ body {
 }
 
 /* Footer */
-.footer {
+/* .footer {
     background-color: rgb(15, 118, 186);
     border-top: 1px solid var(--gray-200);
     padding: 50px 0 20px;
@@ -1847,7 +1861,72 @@ body {
     font-size: 1.25rem;
     color: var(--dark-blue);
     margin-bottom: 5px;
+} */
+
+
+.footer {
+    width: 100%;
+    background: #f8fbff;
+    /* exact light background */
+    border-top: 1px solid #e6eef6;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
 }
+
+/* ─── Top Row ─── */
+.footer-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 0;
+    border-bottom: 1px solid #e6eef6;
+}
+
+.footer-top a {
+    font-size: 14px;
+    font-weight: 500;
+    color: #3b82f6;
+    text-decoration: none;
+}
+
+.footer-top a:hover {
+    text-decoration: underline;
+}
+
+.footer-top .divider {
+    color: #b6c3d1;
+}
+
+/* ─── Bottom Row ─── */
+.footer-bottom {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 18px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 14px;
+    color: #9aa3af;
+}
+
+.heart {
+    color: #3b82f6;
+    margin: 0 4px;
+}
+
+/* ─── Mobile Responsive ─── */
+@media (max-width: 768px) {
+    .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}
+
 
 .hero-logo {
     margin-bottom: 24px;
@@ -2180,6 +2259,7 @@ body {
         align-items: center;
         text-align: center;
     }
+
     .placement-divider {
         display: none;
     }
@@ -2428,11 +2508,11 @@ body {
     }
 }
 
-@media (max-width: 520px) {
+/* @media (max-width: 520px) {
     .cta-content {
         background-position-x: -64px;
     }
-}
+} */
 
 @media (max-width: 1024px) {
     .hero-content {
@@ -2796,6 +2876,7 @@ body {
         background-position: center;
     }
 }
+
 /* Video Facade Styles - Performance Upgrade */
 .video-facade {
     position: absolute;
@@ -2823,15 +2904,15 @@ body {
     justify-content: center;
     transition: transform 0.2s ease, background-color 0.2s;
     backdrop-filter: blur(4px);
-    border: 2px solid rgba(255,255,255,0.8);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .video-play-btn::after {
     content: "";
     display: block;
-    width: 0; 
-    height: 0; 
+    width: 0;
+    height: 0;
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
     border-left: 18px solid #fff;
@@ -2879,9 +2960,12 @@ body {
 }
 
 @keyframes softPulse {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: scale(1);
     }
+
     50% {
         transform: scale(1.5);
     }
@@ -2892,10 +2976,12 @@ body {
     .footer-signature {
         font-size: 12px;
     }
+
     .footer-copy {
         font-size: 10px;
     }
 }
+
 .mirai-life-card {
     border-radius: 18px;
     overflow: hidden;
