@@ -157,219 +157,211 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-//   LIFE @ MIRAI – FINAL INFINITE CAROUSEL SCRIPT
+/* =========================
+   LIFE @ MIRAI – CAROUSEL
+========================= */
+
 const lifeSection = document.querySelector(".mirai-life-carousel");
 const lifeTrack = document.querySelector(".mirai-life-track");
 
+/* ---------- CURSOR FEEDBACK (DESKTOP UX) ---------- */
+lifeSection.style.cursor = "grab";
+
+lifeSection.addEventListener("mousedown", () => {
+  lifeSection.style.cursor = "grabbing";
+});
+
+window.addEventListener("mouseup", () => {
+  lifeSection.style.cursor = "grab";
+});
+
+
+lifeSection.style.touchAction = "pan-y";
+
+/* ---------- STATE ---------- */
 let lifeDragging = false;
 let lifeStartX = 0;
 let lifeTranslateX = 0;
 let lifeSpeed = 0.6;
+let touchDragging = false;
+let touchStartX = 0;
 
-let isCarouselPaused = false;
 let isVideoPlaying = false;
 
-//   DUPLICATE CARDS FOR TRUE INFINITE LOOP
-const lifeOriginalCards = [...lifeTrack.children];
+/* ---------- DUPLICATE NON-VIDEO CARDS ---------- */
+const originalCards = [...lifeTrack.children];
 
-// clone ONLY non-video cards
-lifeOriginalCards.forEach(card => {
+originalCards.forEach(card => {
   if (!card.classList.contains("is-video")) {
     lifeTrack.appendChild(card.cloneNode(true));
   }
 });
 
-//   CALCULATE WIDTH OF ONE FULL SET & CACHE DIMENSIONS
-let lifeTotalWidth = 0;
-let cachedCardWidth = 220; // fallback
+/* ---------- CALCULATE WIDTH ---------- */
+let totalWidth = 0;
+originalCards.forEach(card => {
+  const gap = parseFloat(getComputedStyle(card).marginRight) || 28;
+  totalWidth += card.offsetWidth + gap;
+});
 
-if (lifeOriginalCards.length > 0) {
-  cachedCardWidth = lifeOriginalCards[0].offsetWidth;
-  lifeOriginalCards.forEach(card => {
-    const style = getComputedStyle(card);
-    const gap = parseFloat(style.marginRight) || 28;
-    lifeTotalWidth += card.offsetWidth + gap;
-  });
-}
-
-//   START FROM CENTER (IMPORTANT)
-lifeTranslateX = -lifeTotalWidth / 2;
+/* ---------- START FROM CENTER ---------- */
+lifeTranslateX = -totalWidth / 2;
 lifeTrack.style.transform = `translateX(${lifeTranslateX}px)`;
 
-
-//  WRAP LOGIC (BOTH DIRECTIONS)
-function wrapLifeCarousel() {
-  if (lifeTranslateX <= -lifeTotalWidth) {
-    lifeTranslateX += lifeTotalWidth;
-  }
-  if (lifeTranslateX >= 0) {
-    lifeTranslateX -= lifeTotalWidth;
-  }
+/* ---------- WRAP LOGIC ---------- */
+function wrapCarousel() {
+  if (lifeTranslateX <= -totalWidth) lifeTranslateX += totalWidth;
+  if (lifeTranslateX >= 0) lifeTranslateX -= totalWidth;
 }
 
-//  AUTO ANIMATION
-let lastCenterCheck = 0;
-const centerCheckInterval = 100; // Throttle layout reads to every 100ms
-
-function updateCenterCard() {
-  const now = Date.now();
-  if (now - lastCenterCheck < centerCheckInterval) return;
-  lastCenterCheck = now;
-
-  const centerX = lifeSection.offsetWidth / 2;
-
-  // Utilize live children collection
-  const cards = lifeTrack.children;
-  for (let i = 0; i < cards.length; i++) {
-    const card = cards[i];
-    // Calculate center based on transform + offset
-    // Visual Postion = currentTrackX + cardLeft + halfWidth
-    const cardCenter = lifeTranslateX + card.offsetLeft + cachedCardWidth / 2;
-
-    const isCentered = Math.abs(cardCenter - centerX) < (cachedCardWidth / 2);
-    const hasClass = card.classList.contains("is-center");
-
-    if (isCentered && !hasClass) card.classList.add("is-center");
-    if (!isCentered && hasClass) card.classList.remove("is-center");
-  }
-}
-
-function animateLifeCarousel() {
-  if (!isCarouselPaused) {
+/* ---------- AUTO ANIMATION ---------- */
+function animateCarousel() {
+  if (!isVideoPlaying) {
     lifeTranslateX -= lifeSpeed;
-    wrapLifeCarousel();
+    wrapCarousel();
     lifeTrack.style.transform = `translateX(${lifeTranslateX}px)`;
-    updateCenterCard();
   }
-  requestAnimationFrame(animateLifeCarousel);
+  requestAnimationFrame(animateCarousel);
 }
-requestAnimationFrame(animateLifeCarousel);
 
+requestAnimationFrame(animateCarousel);
 
-//  MOUSE DRAG
-lifeSection.addEventListener("mousedown", (e) => {
+/* ---------- DRAG SUPPORT ---------- */
+lifeSection.addEventListener("mousedown", e => {
   lifeDragging = true;
   lifeStartX = e.clientX;
-  lifeSection.style.cursor = "grabbing";
 });
 
 window.addEventListener("mouseup", () => {
   lifeDragging = false;
-  lifeSection.style.cursor = "default";
 });
 
-lifeSection.addEventListener("mousemove", (e) => {
+
+lifeSection.addEventListener("mousemove", e => {
   if (!lifeDragging) return;
+
   const delta = e.clientX - lifeStartX;
   lifeStartX = e.clientX;
   lifeTranslateX += delta;
-  wrapLifeCarousel();
+  wrapCarousel();
   lifeTrack.style.transform = `translateX(${lifeTranslateX}px)`;
 });
 
-//  TRACKPAD HORIZONTAL SCROLL ONLY
+
+
+/* ---------- TOUCH DRAG SUPPORT (ANDROID / iOS) ---------- */
+
+lifeSection.addEventListener("touchstart", (e) => {
+  touchDragging = true;
+  touchStartX = e.touches[0].clientX;
+}, { passive: true });
+
+lifeSection.addEventListener("touchmove", (e) => {
+  if (!touchDragging) return;
+
+  const currentX = e.touches[0].clientX;
+  const delta = currentX - touchStartX;
+  touchStartX = currentX;
+
+  lifeTranslateX += delta;
+  wrapCarousel();
+  lifeTrack.style.transform = `translateX(${lifeTranslateX}px)`;
+
+  // 🔥 stop vertical scroll ONLY while swiping horizontally
+  e.preventDefault();
+}, { passive: false });
+
+lifeSection.addEventListener("touchend", () => {
+  touchDragging = false;
+});
+
+
+/* ---------- TRACKPAD HORIZONTAL SCROLL ---------- */
 lifeSection.addEventListener(
   "wheel",
-  (e) => {
+  e => {
+    if (isVideoPlaying) {
+      e.preventDefault();
+      return;
+    }
     if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
-    e.preventDefault();
-    isCarouselPaused = true;
-    lifeTranslateX -= e.deltaX;
-    wrapLifeCarousel();
-    lifeTrack.style.transform = `translateX(${lifeTranslateX}px)`;
 
-    clearTimeout(lifeSection._scrollTimeout);
-    lifeSection._scrollTimeout = setTimeout(() => {
-      if (!isVideoPlaying) {
-        isCarouselPaused = false;
-      }
-    }, 120);
+    e.preventDefault();
+    lifeTranslateX -= e.deltaX;
+    wrapCarousel();
+    lifeTrack.style.transform = `translateX(${lifeTranslateX}px)`;
   },
   { passive: false }
 );
 
+/* =========================
+   VIDEO LOGIC (CLEAN)
+========================= */
 
-/* ================= VIDEO CONTROL (FACADE PATTERN) ================= */
-
-const players = {};
-
-// Delegate click listener for all video cards
-lifeTrack.addEventListener("click", (e) => {
-  const card = e.target.closest(".mirai-life-card.is-video");
-  if (!card) return;
-
-  // Stop propagation to avoid immediate 'click outside' triggers if any
-  e.stopPropagation();
-
-  // If YouTube API is not ready yet, we can't create the player
-  if (typeof YT === 'undefined' || typeof YT.Player === 'undefined') {
-    console.warn("YouTube API not ready yet");
-    return;
-  }
-
-  const videoId = card.dataset.videoId;
-  const facade = card.querySelector(".video-facade");
-  const containerId = `player-${videoId}`;
-
-  // 1. Initialize Player if not exists
-  if (!players[videoId]) {
-    if (facade) facade.style.display = "none";
-
-    // Immediately enable interaction (remove pointer-events: none)
-    // allowing user to click play if autoplay is blocked
-    card.classList.add("is-playing");
-
-    // Ensure the container exists
-    if (document.getElementById(containerId)) {
-      players[videoId] = new YT.Player(containerId, {
-        videoId: videoId,
-        height: '100%',
-        width: '100%',
-        playerVars: {
-          'autoplay': 1,
-          'rel': 0,
-          'enablejsapi': 1,
-          ...(window.location.protocol !== 'file:' && { 'origin': window.location.origin })
-        },
-        events: {
-          'onStateChange': onPlayerStateChange
-        }
-      });
-    }
-  } else {
-    // If player exists, ensure it plays
-    players[videoId].playVideo();
-    card.classList.add("is-playing");
-  }
-});
-
-
-function onPlayerStateChange(event) {
-  const state = event.data;
-  const iframe = event.target.getIframe();
-  const card = iframe ? iframe.closest(".mirai-life-card") : null;
-
-  if (state === YT.PlayerState.PLAYING) {
-    isVideoPlaying = true;
-    isCarouselPaused = true;
-    if (card) card.classList.add("is-playing");
-  } else if (state === YT.PlayerState.PAUSED || state === YT.PlayerState.ENDED) {
-    isVideoPlaying = false; 
-    isCarouselPaused = false;
-    if (card) card.classList.remove("is-playing");
-  }
+function resetVideoCard(card) {
+  const iframe = card.querySelector("iframe");
+  iframe.src = "";              // fully stop video
+  card.classList.remove("is-playing");
+  isVideoPlaying = false;       // 🔥 carousel resumes automatically
 }
 
-// Pause carousel on hover
-lifeSection.addEventListener("mouseenter", () => {
-  isCarouselPaused = true;
+/* ---------- PLAY VIDEO ---------- */
+document.querySelectorAll(".mirai-life-card.is-video").forEach(card => {
+  const thumb = card.querySelector(".video-thumb");
+
+  // ✅ If this is a YouTube-only card, DO NOTHING
+  if (card.classList.contains("youtube-only")) return;
+
+  const iframe = card.querySelector("iframe");
+
+  thumb.addEventListener("click", e => {
+    e.stopPropagation();
+
+    if (card.classList.contains("is-playing")) return;
+
+    // Stop any other video
+    document
+      .querySelectorAll(".mirai-life-card.is-playing")
+      .forEach(c => resetVideoCard(c));
+
+    card.classList.add("is-playing");
+    isVideoPlaying = true;
+
+    iframe.src = iframe.dataset.src + "&autoplay=1";
+  });
 });
 
-lifeSection.addEventListener("mouseleave", () => {
-  if (!isVideoPlaying) {
-    isCarouselPaused = false;
+
+/* ---------- CLICK OUTSIDE → RESET ---------- */
+document.addEventListener("click", e => {
+  if (!e.target.closest(".mirai-life-card.is-video")) {
+    document
+      .querySelectorAll(".mirai-life-card.is-playing")
+      .forEach(card => resetVideoCard(card));
   }
 });
+
+/* ---------- RESET WHEN CARD LEAVES VIEW ---------- */
+const observer = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting && entry.target.classList.contains("is-playing")) {
+        resetVideoCard(entry.target);
+      }
+    });
+  },
+  {
+    root: lifeSection,
+    threshold: 0.25
+  }
+);
+
+document
+  .querySelectorAll(".mirai-life-card.is-video")
+  .forEach(card => observer.observe(card));
+
+
+
 /*  LAZY LOAD */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -396,3 +388,4 @@ function onYouTubeIframeAPIReady() {
 }
 document.querySelectorAll(".mirai-life-card.is-video iframe")
   .forEach(iframe => videoObserver.observe(iframe));
+
