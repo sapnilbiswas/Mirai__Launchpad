@@ -359,6 +359,27 @@ lifeSection.addEventListener("mouseleave", () => {
     isCarouselPaused = false;
   }
 });
+/*  LAZY LOAD */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const lazyBgs = document.querySelectorAll(".lazy-bg");
+
+  if (!lazyBgs.length) return;
+
+  const bgObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        el.style.backgroundImage = `url('${el.dataset.bg}')`;
+        observer.unobserve(el);
+      }
+    });
+  }, {
+    rootMargin: "200px"
+  });
+
+  lazyBgs.forEach(bg => bgObserver.observe(bg));
+});
 
 // Global API Ready (required by YouTube API)
 function onYouTubeIframeAPIReady() {
