@@ -392,7 +392,7 @@ document.addEventListener("DOMContentLoaded", () => {
   lazyBgs.forEach(bg => bgObserver.observe(bg));
 });
 
-// Global API Ready (required by YouTube API)
 function onYouTubeIframeAPIReady() {
-  // Players are initialized on demand (click)
 }
+document.querySelectorAll(".mirai-life-card.is-video iframe")
+  .forEach(iframe => videoObserver.observe(iframe));

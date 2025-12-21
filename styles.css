@@ -890,17 +890,17 @@ body {
 }
 
 .jiya {
-    background-image: url("https://i.ibb.co/tMFzd6Tc/Jiya.jpg");
+    background-image: url("Jiya.jpeg");
     background-size: cover;
 }
 
 .molly {
-    background-image: url("https://i.ibb.co/5x1vGS54/Molly.jpg");
+    background-image: url("Molly.JPG");
     background-size: cover;
 }
 
 .ritik {
-    background-image: url("https://i.ibb.co/1YR9Ydzj/ritik.jpg");
+    background-image: url("ritik.jpeg");
     background-position-y: -30px;
     background-size: cover;
     background-repeat: no-repeat;
@@ -1599,14 +1599,6 @@ body {
     border-top: 1px solid var(--gray-200);
     padding: 50px 0 20px;
 }
-.campus-image {
-  width: 100%;
-  height: 220px;       
-  border-radius: 12px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
 
 .footer-content {
     display: flex;
@@ -1674,22 +1666,6 @@ body {
 .footer-links a:hover {
     color: var(--primary-blue);
     transform: translateX(5px);
-}
-.mirai-life-card {
-  min-width: 220px;
-  height: 280px;
-  border-radius: 14px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.lazy-bg {
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.lazy-bg[style*="background-image"] {
-  opacity: 1;
 }
 
 .footer-links a {
@@ -2580,10 +2556,12 @@ body {
     .gallery-item {
         width: 100%;
         height: 150px !important;
+        /* Ensure visibility */
         border-radius: 12px;
         background-position: center;
     }
 }
+/* Video Facade Styles - Performance Upgrade */
 .video-facade {
     position: absolute;
     top: 0;
@@ -2603,29 +2581,32 @@ body {
 .video-play-btn {
     width: 60px;
     height: 60px;
-    background-color: rgba(33, 33, 33, 0.8);
+    background-color: rgba(33, 33, 33, 0.9);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: transform 0.2s ease, background-color 0.2s;
     backdrop-filter: blur(4px);
-    border: 1px solid rgba(255,255,255,0.2);
+    border: 2px solid rgba(255,255,255,0.8);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
 .video-play-btn::after {
     content: "";
+    display: block;
     width: 0; 
     height: 0; 
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
-    border-left: 16px solid #fff;
+    border-left: 18px solid #fff;
     margin-left: 4px;
 }
 
 .mirai-life-card:hover .video-play-btn {
     background-color: #f00;
     transform: scale(1.1);
+    border-color: #fff;
 }
 
 .video-wrapper iframe {
@@ -2635,58 +2616,3 @@ body {
     width: 100%;
     height: 100%;
 }
-
-.lazy-bg {
-  background-color: #e6e6e6;  
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  transition: background-image 0.4s ease-in-out;
-}
-
-
-.mirai-life-card {
-  width: 220px;
-  height: 280px;
-  border-radius: 25px;
-  flex-shrink: 0;
-  overflow: hidden;
-  background-color: #f2f2f2;
-  position: relative;
-}
-
-
-.mirai-life-card.is-video {
-  background: #000;
-  cursor: pointer;
-}
-
-.video-wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.video-wrapper iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
-  display: block;
-}
-.mirai-life-card {
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
-}
-
-.mirai-life-card.is-center {
-  transform: scale(1.08);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
-  z-index: 2;
-}
-.mirai-life-card.is-video iframe {
-  pointer-events: auto;
-}
-
-.mirai-life-card:not(.is-video) {
-  cursor: grab;
-}
-
