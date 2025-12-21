@@ -301,6 +301,12 @@ lifeTrack.addEventListener("click", (e) => {
   // Stop propagation to avoid immediate 'click outside' triggers if any
   e.stopPropagation();
 
+  // If YouTube API is not ready yet, we can't create the player
+  if (typeof YT === 'undefined' || typeof YT.Player === 'undefined') {
+    console.warn("YouTube API not ready yet");
+    return;
+  }
+
   const videoId = card.dataset.videoId;
   const facade = card.querySelector(".video-facade");
   const containerId = `player-${videoId}`;
@@ -309,14 +315,21 @@ lifeTrack.addEventListener("click", (e) => {
   if (!players[videoId]) {
     if (facade) facade.style.display = "none";
 
+    // Immediately enable interaction (remove pointer-events: none)
+    // allowing user to click play if autoplay is blocked
+    card.classList.add("is-playing");
+
     // Ensure the container exists
     if (document.getElementById(containerId)) {
       players[videoId] = new YT.Player(containerId, {
         videoId: videoId,
+        height: '100%',
+        width: '100%',
         playerVars: {
           'autoplay': 1,
           'rel': 0,
-          'enablejsapi': 1
+          'enablejsapi': 1,
+          ...(window.location.protocol !== 'file:' && { 'origin': window.location.origin })
         },
         events: {
           'onStateChange': onPlayerStateChange
@@ -324,11 +337,9 @@ lifeTrack.addEventListener("click", (e) => {
       });
     }
   } else {
-    // 2. Already initialized? Toggle play/pause? 
-    // Usually clicking the iframe handles this, but since we capture the click on the card wrapper...
-    // Actually, pointer-events on the wrapper might block the iframe?
-    // We set 'pointer-events: auto' on iframe in CSS when is-playing.
-    // If iframe consumes click, this listener won't fire.
+    // If player exists, ensure it plays
+    players[videoId].playVideo();
+    card.classList.add("is-playing");
   }
 });
 
@@ -343,7 +354,7 @@ function onPlayerStateChange(event) {
     isCarouselPaused = true;
     if (card) card.classList.add("is-playing");
   } else if (state === YT.PlayerState.PAUSED || state === YT.PlayerState.ENDED) {
-    isVideoPlaying = false;
+    isVideoPlaying = false; 
     isCarouselPaused = false;
     if (card) card.classList.remove("is-playing");
   }
