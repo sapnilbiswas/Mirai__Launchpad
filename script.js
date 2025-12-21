@@ -166,9 +166,10 @@ let lifeStartX = 0;
 let lifeTranslateX = 0;
 let lifeSpeed = 0.6;
 
+let isCarouselPaused = false;
+let isVideoPlaying = false;
 
 //   DUPLICATE CARDS FOR TRUE INFINITE LOOP
-
 const lifeOriginalCards = [...lifeTrack.children];
 
 // clone ONLY non-video cards
@@ -178,24 +179,25 @@ lifeOriginalCards.forEach(card => {
   }
 });
 
-//   CALCULATE WIDTH OF ONE FULL SET
-
+//   CALCULATE WIDTH OF ONE FULL SET & CACHE DIMENSIONS
 let lifeTotalWidth = 0;
-lifeOriginalCards.forEach(card => {
-  const style = getComputedStyle(card);
-  const gap = parseFloat(style.marginRight) || 28;
-  lifeTotalWidth += card.offsetWidth + gap;
-});
+let cachedCardWidth = 220; // fallback
 
+if (lifeOriginalCards.length > 0) {
+  cachedCardWidth = lifeOriginalCards[0].offsetWidth;
+  lifeOriginalCards.forEach(card => {
+    const style = getComputedStyle(card);
+    const gap = parseFloat(style.marginRight) || 28;
+    lifeTotalWidth += card.offsetWidth + gap;
+  });
+}
 
 //   START FROM CENTER (IMPORTANT)
-
 lifeTranslateX = -lifeTotalWidth / 2;
 lifeTrack.style.transform = `translateX(${lifeTranslateX}px)`;
 
 
 //  WRAP LOGIC (BOTH DIRECTIONS)
-
 function wrapLifeCarousel() {
   if (lifeTranslateX <= -lifeTotalWidth) {
     lifeTranslateX += lifeTotalWidth;
@@ -205,23 +207,31 @@ function wrapLifeCarousel() {
   }
 }
 
-
 //  AUTO ANIMATION
-
+let lastCenterCheck = 0;
+const centerCheckInterval = 100; // Throttle layout reads to every 100ms
 
 function updateCenterCard() {
-  const cards = document.querySelectorAll(".mirai-life-card");
+  const now = Date.now();
+  if (now - lastCenterCheck < centerCheckInterval) return;
+  lastCenterCheck = now;
+
   const centerX = lifeSection.offsetWidth / 2;
 
-  cards.forEach(card => {
-    const rect = card.getBoundingClientRect();
-    const cardCenter = rect.left + rect.width / 2;
+  // Utilize live children collection
+  const cards = lifeTrack.children;
+  for (let i = 0; i < cards.length; i++) {
+    const card = cards[i];
+    // Calculate center based on transform + offset
+    // Visual Postion = currentTrackX + cardLeft + halfWidth
+    const cardCenter = lifeTranslateX + card.offsetLeft + cachedCardWidth / 2;
 
-    card.classList.toggle(
-      "is-center",
-      Math.abs(cardCenter - centerX) < rect.width / 2
-    );
-  });
+    const isCentered = Math.abs(cardCenter - centerX) < (cachedCardWidth / 2);
+    const hasClass = card.classList.contains("is-center");
+
+    if (isCentered && !hasClass) card.classList.add("is-center");
+    if (!isCentered && hasClass) card.classList.remove("is-center");
+  }
 }
 
 function animateLifeCarousel() {
@@ -233,17 +243,19 @@ function animateLifeCarousel() {
   }
   requestAnimationFrame(animateLifeCarousel);
 }
+requestAnimationFrame(animateLifeCarousel);
 
 
-//  MOUSE DRAG (NO CURSOR CHANGE)
-
+//  MOUSE DRAG
 lifeSection.addEventListener("mousedown", (e) => {
   lifeDragging = true;
   lifeStartX = e.clientX;
+  lifeSection.style.cursor = "grabbing";
 });
 
 window.addEventListener("mouseup", () => {
   lifeDragging = false;
+  lifeSection.style.cursor = "default";
 });
 
 lifeSection.addEventListener("mousemove", (e) => {
@@ -252,25 +264,20 @@ lifeSection.addEventListener("mousemove", (e) => {
   lifeStartX = e.clientX;
   lifeTranslateX += delta;
   wrapLifeCarousel();
+  lifeTrack.style.transform = `translateX(${lifeTranslateX}px)`;
 });
 
 //  TRACKPAD HORIZONTAL SCROLL ONLY
 lifeSection.addEventListener(
   "wheel",
   (e) => {
-    // Only care about horizontal trackpad scroll
     if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
-
     e.preventDefault();
-
-    // Pause auto animation while user scrolls
     isCarouselPaused = true;
-
     lifeTranslateX -= e.deltaX;
     wrapLifeCarousel();
     lifeTrack.style.transform = `translateX(${lifeTranslateX}px)`;
 
-    // Resume animation shortly after scroll ends
     clearTimeout(lifeSection._scrollTimeout);
     lifeSection._scrollTimeout = setTimeout(() => {
       if (!isVideoPlaying) {
@@ -282,144 +289,78 @@ lifeSection.addEventListener(
 );
 
 
-/* ================= VIDEO CONTROL ================= */
+/* ================= VIDEO CONTROL (FACADE PATTERN) ================= */
 
-let activeVideoCard = null;
-
-let isCarouselPaused = false;   // ← ADD THIS LINE
-
-let isVideoPlaying = false;
-
-let activePlayer = null;
 const players = {};
 
-requestAnimationFrame(animateLifeCarousel);
-function stopVideo(card) {
-  const iframe = card.querySelector("iframe");
+// Delegate click listener for all video cards
+lifeTrack.addEventListener("click", (e) => {
+  const card = e.target.closest(".mirai-life-card.is-video");
+  if (!card) return;
+
+  // Stop propagation to avoid immediate 'click outside' triggers if any
+  e.stopPropagation();
+
   const videoId = card.dataset.videoId;
-  iframe.src = `https://www.youtube.com/embed/${videoId}?rel=0`;
-  card.classList.remove("is-playing");
-}
+  const facade = card.querySelector(".video-facade");
+  const containerId = `player-${videoId}`;
 
+  // 1. Initialize Player if not exists
+  if (!players[videoId]) {
+    if (facade) facade.style.display = "none";
 
-function onYouTubeIframeAPIReady() {
-  document.querySelectorAll(".mirai-life-card.is-video").forEach(card => {
-    const videoId = card.dataset.videoId;
-    const iframe = card.querySelector("iframe");
-    const iframeId = iframe.id;
-
-    card.addEventListener("click", (e) => {
-      e.stopPropagation();
-
-      if (!players[videoId]) {
-        players[videoId] = new YT.Player(iframe.id, {
-          events: {
-            onStateChange: handleVideoState
-          }
-        });
-      }
-
-      players[videoId].playVideo();
-      activePlayer = players[videoId];
-    });
-  });
-}
-
-function handleVideoState(event) {
-  const card = event.target.getIframe().closest(".mirai-life-card");
-
-  if (event.data === YT.PlayerState.PLAYING) {
-    isVideoPlaying = true;
-    isCarouselPaused = true;
-    card.classList.add("is-playing");
-  }
-
-  if (
-    event.data === YT.PlayerState.PAUSED ||
-    event.data === YT.PlayerState.ENDED
-  ) {
-    isVideoPlaying = false;
-    isCarouselPaused = false;
-    card.classList.remove("is-playing");
-  }
-}
-
-document.addEventListener("click", (e) => {
-  const clickedVideo = e.target.closest(".mirai-life-card.is-video");
-
-  // Clicked outside any video card
-  if (!clickedVideo && activePlayer) {
-    activePlayer.pauseVideo();
-    isVideoPlaying = false;
-    isCarouselPaused = false;
-
-    document
-      .querySelectorAll(".mirai-life-card.is-playing")
-      .forEach(card => card.classList.remove("is-playing"));
+    // Ensure the container exists
+    if (document.getElementById(containerId)) {
+      players[videoId] = new YT.Player(containerId, {
+        videoId: videoId,
+        playerVars: {
+          'autoplay': 1,
+          'rel': 0,
+          'enablejsapi': 1
+        },
+        events: {
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+  } else {
+    // 2. Already initialized? Toggle play/pause? 
+    // Usually clicking the iframe handles this, but since we capture the click on the card wrapper...
+    // Actually, pointer-events on the wrapper might block the iframe?
+    // We set 'pointer-events: auto' on iframe in CSS when is-playing.
+    // If iframe consumes click, this listener won't fire.
   }
 });
 
 
+function onPlayerStateChange(event) {
+  const state = event.data;
+  const iframe = event.target.getIframe();
+  const card = iframe ? iframe.closest(".mirai-life-card") : null;
+
+  if (state === YT.PlayerState.PLAYING) {
+    isVideoPlaying = true;
+    isCarouselPaused = true;
+    if (card) card.classList.add("is-playing");
+  } else if (state === YT.PlayerState.PAUSED || state === YT.PlayerState.ENDED) {
+    isVideoPlaying = false;
+    isCarouselPaused = false;
+    if (card) card.classList.remove("is-playing");
+  }
+}
+
+// Pause carousel on hover
 lifeSection.addEventListener("mouseenter", () => {
   isCarouselPaused = true;
 });
 
 lifeSection.addEventListener("mouseleave", () => {
-  // Resume ONLY if no video is playing
   if (!isVideoPlaying) {
     isCarouselPaused = false;
   }
 });
 
-document.addEventListener("click", (e) => {
-  const clickedVideo = e.target.closest(".mirai-life-card.is-video");
-
-  if (!clickedVideo && activePlayer) {
-    activePlayer.pauseVideo();
-    isCarouselPaused = false;
-    activePlayer = null;
-
-    document
-      .querySelectorAll(".mirai-life-card.is-playing")
-      .forEach(card => card.classList.remove("is-playing"));
-  }
-});
-
-
-const carousel = document.querySelector(".mirai-life-carousel");
-
-carousel.addEventListener("mouseenter", () => {
-  isCarouselPaused = true;
-});
-
-carousel.addEventListener("mouseleave", () => {
-  // resume only if no video is playing
-  if (!activePlayer) {
-    isCarouselPaused = false;
-  }
-});
-
-
-const videoObserver = new IntersectionObserver(
-  (entries, observer) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-
-      const iframe = entry.target;
-      if (!iframe.src) {
-        iframe.src = iframe.dataset.src; // 🔥 async load
-      }
-
-      observer.unobserve(iframe); // load only once
-    });
-  },
-  {
-    root: document.querySelector(".mirai-life-carousel"),
-    rootMargin: "300px", // preload before visible
-    threshold: 0.1
-  }
-);
-
-// Observe ONLY video iframes
-document.querySelectorAll(".mirai-life-card.is-video iframe")
-  .forEach(iframe => videoObserver.observe(iframe));
+// Global API Ready (required by YouTube API)
+function onYouTubeIframeAPIReady() {
+  // Players are initialized on demand (click)
+}
