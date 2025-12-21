@@ -389,4 +389,3 @@ function onYouTubeIframeAPIReady() {
 }
 document.querySelectorAll(".mirai-life-card.is-video iframe")
   .forEach(iframe => videoObserver.observe(iframe));
-

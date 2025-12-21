@@ -29,7 +29,7 @@ body {
     background: linear-gradient(180deg, #f4fbff 0%, #ffffff 100%);
     padding: 0;
     /* reduced height */
-    height: 75vh;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1131,17 +1131,17 @@ body {
 }
 
 .jiya {
-    background-image: url("Jiya.jpeg");
+    background-image: url("https://i.ibb.co/23pCZdRW/Jiya.jpg");
     background-size: cover;
 }
 
 .molly {
-    background-image: url("Molly.JPG");
+    background-image: url("https://i.ibb.co/wF22W9NV/Molly.jpg");
     background-size: cover;
 }
 
 .ritik {
-    background-image: url("ritik.jpeg");
+    background-image: url("https://i.ibb.co/23Xqbcr9/ritik.jpg");
     background-position-y: -30px;
     background-size: cover;
     background-repeat: no-repeat;
@@ -1439,7 +1439,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    background-image: url("hitechgroupPhoto.png");
+    background-image: url("https://i.postimg.cc/MH6Vtbvd/hitechgroup-Photo.png");
     background-size: cover;
     background-position: left center;
     background-repeat: no-repeat;
@@ -2985,4 +2985,10 @@ body {
 .mirai-life-card {
     border-radius: 18px;
     overflow: hidden;
+}
+
+@media screen and (min-width:1022) {
+    .hero-form-container {
+        margin-top: 0%;
+    }
 }
