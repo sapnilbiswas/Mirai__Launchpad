@@ -742,7 +742,8 @@ body {
     padding-left: 0;
     /* ❌ remove left bias */
     padding-top: 40px;
-    width: max-content;
+    /* width: max-content; */
+    width: auto;
     user-select: none;
     will-change: transform;
     position: relative;
@@ -762,7 +763,7 @@ body {
     position: relative;
     z-index: 2;
     transform-origin: center center;
-    /* scale upwards */
+    scale: upwards;
     transition: transform 0.35s ease, box-shadow 0.35s ease;
     background: #000;
     display: flex;
@@ -770,6 +771,23 @@ body {
     justify-content: center;
 
 }
+
+/* .mirai-life-card {
+    width: 220px;
+    height: 280px;
+    border-radius: 18px;
+    background-size: cover;
+    background-position: center;
+    flex-shrink: 0;
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+    position: relative;
+    z-index: 2;
+    transform-origin: center center;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    background: #000;
+    overflow: hidden;
+} */
+
 
 .video-wrapper {
     width: 100%;
@@ -2991,8 +3009,97 @@ body {
     overflow: hidden;
 }
 
-@media screen and (min-width:1022) {
+
+@media (max-width: 1250px) {
+    .hero-container {
+        gap: 20px;
+    }
+
     .hero-form-container {
-        margin-top: 0%;
+        /* margin-right: 0; */
+        width: 350px;
+    }
+
+    .hero-info-grid {
+        column-gap: 10px;
+        row-gap: 10px;
+    }
+
+    .hero-title {
+        font-size: 300%;
+    }
+
+    /* Set all sections to auto height */
+    .hero,
+    .section,
+    .campuses-section,
+    .mirai-life,
+    .testimonials,
+    .advantage,
+    .placement,
+    .campus-tomorrow,
+    .scholarship {
+        height: auto !important;
+        min-height: auto !important;
+        padding: 5px 0;
+    }
+
+    .admission-wrapper {
+        gap: 50px;
+        /* Reduce from 23% */
+    }
+}
+
+@media screen and (min-width: 1202px) and (max-width: 1396px) {
+    .hero-form-container {
+        margin-top: 23%;
+    }
+
+    .campuses-section {
+        margin-top: 6rem;
+    }
+
+}
+
+@media screen and (min-width: 1201px) and (max-width: 1249px) {
+    .hero-form-container {
+        margin-top: 10.3%;
+    }
+}
+
+/* 1025 1197 */
+@media screen and (min-width: 1025px) and (max-width: 1197px) {
+    .hero-form-container {
+        margin-top: 14%;
+    }
+}
+
+/* 110% zoom windowed mode - approximately 1250px to 1400px */
+@media screen and (min-width: 1250px) and (max-width: 1400px) {
+
+    /* Set all sections to auto height */
+    .hero,
+    .section,
+    .campuses-section,
+    .mirai-life,
+    .testimonials,
+    .advantage,
+    .placement,
+    .campus-tomorrow,
+    .scholarship {
+        height: auto !important;
+        min-height: auto !important;
+        padding: 5px 0;
+    }
+
+    .campuses-section {
+        margin-top: 0 !important;
+    }
+
+    .hero-logo {
+        margin-top: 2% !important;
+    }
+    .hero-form-container{
+        margin-top: 12%;
     }
 }
