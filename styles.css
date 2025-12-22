@@ -33,7 +33,7 @@ body {
     background: linear-gradient(180deg, #f4fbff 0%, #ffffff 100%);
     padding: 0;
     /* reduced height */
-    height: 80vh;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -484,7 +484,7 @@ body {
     padding: 0;
     width: 100%;
     overflow-x: hidden;
-    height: 80vh;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -509,7 +509,7 @@ body {
 .campuses-section {
     padding: 0;
     background: #ffffff;
-    height: 80vh;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -593,6 +593,7 @@ body {
 
 /* Admission Process */
 .admission {
+    height: auto;
     padding: 80px 0;
 }
 
@@ -682,7 +683,7 @@ body {
 .mirai-life {
     padding-top: 20px;
     padding-bottom: 20px;
-    height: 70vh;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1120,7 +1121,7 @@ body {
 }
 
 .testimonials {
-    height: 50vh;
+    height: auto;
 }
 
 .testimonial-card {
@@ -1188,8 +1189,7 @@ body {
 
 /* Mirai Advantage */
 .advantage {
-    height: auto !important;
-    min-height: 80vh;
+    height: auto;
     padding: 60px 0;
     display: flex;
     flex-direction: column;
@@ -1345,8 +1345,8 @@ body {
     /* Dark Blue from user/image */
     color: var(--white);
     text-align: center;
-    padding: 0;
-    height: 40vh;
+    padding: 50px 0;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1434,8 +1434,8 @@ body {
 }
 
 .campus-tomorrow {
-    padding: 0;
-    height: 80vh;
+    padding: 50px 0;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1613,7 +1613,7 @@ body {
 
 .scholarship {
     margin-top: 0;
-    height: 60vh;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -2194,6 +2194,20 @@ body {
         margin: 0 auto;
         padding: 24px;
         border-radius: 16px;
+    }
+
+    /* Section Heights - Responsive */
+    .section,
+    .campuses-section,
+    .mirai-life,
+    .testimonials,
+    .advantage,
+    .campus-tomorrow,
+    .scholarship {
+        height: auto;
+        min-height: auto;
+        padding-top: 40px;
+        padding-bottom: 40px;
     }
 
     /* Campus Section */
@@ -3030,19 +3044,7 @@ body {
     }
 
     /* Set all sections to auto height */
-    .hero,
-    .section,
-    .campuses-section,
-    .mirai-life,
-    .testimonials,
-    .advantage,
-    .placement,
-    .campus-tomorrow,
-    .scholarship {
-        height: auto !important;
-        min-height: auto !important;
-        padding: 5px 0;
-    }
+
 
     .admission-wrapper {
         gap: 50px;
@@ -3077,20 +3079,7 @@ body {
 /* 110% zoom windowed mode - approximately 1250px to 1400px */
 @media screen and (min-width: 1250px) and (max-width: 1400px) {
 
-    /* Set all sections to auto height */
-    .hero,
-    .section,
-    .campuses-section,
-    .mirai-life,
-    .testimonials,
-    .advantage,
-    .placement,
-    .campus-tomorrow,
-    .scholarship {
-        height: auto !important;
-        min-height: auto !important;
-        padding: 5px 0;
-    }
+
 
     .campuses-section {
         margin-top: 0 !important;
@@ -3099,7 +3088,24 @@ body {
     .hero-logo {
         margin-top: 2% !important;
     }
-    .hero-form-container{
+
+    .hero-form-container {
         margin-top: 12%;
     }
+}
+
+/* GLOBAL RESPONSIVE HEIGHT FIX FOR ALL ZOOM LEVELS */
+.hero,
+.section,
+.campuses-section,
+.admission-wrapper,
+.mirai-life,
+.testimonials,
+.advantage,
+.placement,
+.campus-tomorrow,
+.scholarship,
+.financing {
+    height: auto !important;
+    min-height: auto !important;
 }
