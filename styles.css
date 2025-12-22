@@ -12,6 +12,10 @@ img {
     height: auto;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     overflow-x: hidden;
     margin: 0;
@@ -234,7 +238,7 @@ body {
     min-height: auto;
     /* margin-top: 100px; */
     width: 380px;
-    margin-top: 16%;
+    margin-top: 15.8%;
     background: #ffffff;
     border-radius: 16px;
     padding: 20px;
