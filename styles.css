@@ -232,9 +232,9 @@ body {
 .hero-form-container {
     height: auto;
     min-height: auto;
-    margin-top: 50px;
+    /* margin-top: 100px; */
     width: 380px;
-    margin-top: 8%;
+    margin-top: 16%;
     background: #ffffff;
     border-radius: 16px;
     padding: 20px;
