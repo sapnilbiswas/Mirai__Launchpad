@@ -481,7 +481,7 @@ body {
 
 /* Common Section Styles */
 .section {
-    padding: 0;
+    padding: 40px 0;
     width: 100%;
     overflow-x: hidden;
     height: auto;
@@ -507,13 +507,13 @@ body {
 
 /* Our Campuses */
 .campuses-section {
-    padding: 0;
+    padding: 40px 0;
     background: #ffffff;
     height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-top: 2rem;
+    margin-top: 0;
 }
 
 .campus-title {
@@ -591,10 +591,10 @@ body {
 }
 
 
-/* Admission Process */
+/* Admission - wrapper used instead */
 .admission {
     height: auto;
-    padding: 80px 0;
+    padding: 40px 0;
 }
 
 .admission .container {
@@ -681,8 +681,8 @@ body {
 }
 
 .mirai-life {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 40px;
+    padding-bottom: 40px;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -994,7 +994,7 @@ body {
 
 /* mirai vs traditional */
 .mirai-edu-compare {
-    padding: 48px 16px;
+    padding: 40px 16px;
     display: flex;
     justify-content: center;
     font-family: "Inter", system-ui, sans-serif;
@@ -1190,7 +1190,7 @@ body {
 /* Mirai Advantage */
 .advantage {
     height: auto;
-    padding: 60px 0;
+    padding: 40px 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1345,7 +1345,7 @@ body {
     /* Dark Blue from user/image */
     color: var(--white);
     text-align: center;
-    padding: 50px 0;
+    padding: 40px 0;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -1434,7 +1434,7 @@ body {
 }
 
 .campus-tomorrow {
-    padding: 50px 0;
+    padding: 40px 0;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -1622,7 +1622,7 @@ body {
 .scholarship .container {
     background: linear-gradient(180deg, #f4fbff 0%, #ffffff 100%);
     position: relative;
-    padding-top: 2rem;
+    /* padding-top: 2rem; removed */
 }
 
 .scholarship .section-subtitle {
@@ -2203,11 +2203,14 @@ body {
     .testimonials,
     .advantage,
     .campus-tomorrow,
-    .scholarship {
+    .scholarship,
+    .placement,
+    .mirai-edu-compare,
+    .admission-wrapper {
         height: auto;
         min-height: auto;
-        padding-top: 40px;
-        padding-bottom: 40px;
+        padding-top: 30px;
+        padding-bottom: 30px;
     }
 
     /* Campus Section */
@@ -2607,7 +2610,7 @@ body {
     align-items: center;
     /* border: 2px solid black; */
     margin-top: 0;
-    padding: 0 24px;
+    padding: 40px 24px;
     height: auto !important;
 }
 
